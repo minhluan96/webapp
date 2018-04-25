@@ -168,6 +168,10 @@ footer {
       padding: 8px 40px;
       font-size: 18px;
       display: inline-block;
+      -webkit-transition: background-color 0.4s ease, color 0.4s ease;
+      -moz-transition: background-color 0.4s ease, color 0.4s ease;
+      -o-transition: background-color 0.4s ease, color 0.4s ease;
+      transition: background-color 0.4s ease, color 0.4s ease;
 
       &:hover {
         color: black !important;
