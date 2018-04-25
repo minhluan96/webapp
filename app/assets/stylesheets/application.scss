@@ -64,7 +64,7 @@ a:hover {
           margin-left: 0;
         }
 
-        &:hover {
+        &:hover, &[class='active'] {
           color: #A5A5A5;
         }
       }
