@@ -1,0 +1,83 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+@import "bootstrap";
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300');
+
+body {
+  max-width: 1000px;
+  margin: auto;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.navbar {
+  height: 163px;
+  padding: 0.5em 0;
+
+  &__top {
+    height: 110px;
+    width: 100%;
+    padding: 20px 18px;
+  }
+
+  &__bottom {
+    color: rgb(238, 238, 238);
+    height: 39px;
+    background-color: black;
+    width: 100%;
+    font-size: 16px;
+    padding: 0.5em 1.5em;
+  }
+}
+
+.media {
+
+  &__image {
+    img {
+      max-width: 69px;
+    }
+  }
+
+  &__content {
+    padding-left: 8px;
+
+    &--title {
+      font-size: 35px;
+      position: relative;
+      top: -7px;
+    }
+
+    &--description {
+      font-weight: normal;
+      position: relative;
+      top: -16px;
+      letter-spacing: 2px;
+      font-size: 19px;
+    }
+
+    &--cart {
+      fill: #F0AE00;
+      position: absolute;
+      right: 0px;
+      top: 3em;
+      text-align: right;
+      padding-right: 10px;
+      .quantity {
+        fill: white;
+        font-size: 50px;
+      }
+    }
+  }
+}
