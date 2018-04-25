@@ -122,3 +122,29 @@ footer {
   background-color: black;
   padding: 1.5em 1.5em;
 }
+
+.banner {
+  position: relative;
+  margin-top: 50px;
+  &__content {
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.7);
+    top: 4em;
+    left: 2em;
+    width: 381px;
+    padding: 12px;
+  }
+
+  &__button {
+    position: absolute;
+    top: 22em;
+    left: 1.7em;
+    background-color: #f0ae00;
+    padding: 8px 40px;
+    font-size: 18px;
+  }
+}
+
+img {
+  max-width: 1000px;
+}
