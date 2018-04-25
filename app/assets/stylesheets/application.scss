@@ -148,8 +148,44 @@ footer {
       background-color: white;
     }
   }
+
+  img {
+    max-width: 1000px;
+  }
 }
 
-img {
-  max-width: 1000px;
+.black-block {
+  margin: 15px 0;
+  background-color: black;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  font-size: 19px;
+}
+
+.products-section {
+  padding: 0 30px;
+  margin-bottom: 15px;
+
+  &__title {
+    text-align: center;
+    font-size: 30px;
+  }
+
+  &__products-list {
+
+    &--product-item {
+      display: inline-block;
+      max-width: 230px;
+
+      img {
+        max-width: 230px;
+      }
+
+      &--title {
+
+      }
+    }
+
+  }
 }
