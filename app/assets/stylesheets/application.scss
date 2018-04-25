@@ -17,7 +17,7 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:300');
 
 body {
-  max-width: 1000px;
+  width: 1000px;
   min-height: 100%;
   margin: auto;
   font-family: 'Open Sans', sans-serif;
@@ -121,31 +121,58 @@ footer {
   color: rgb(238, 238, 238);
   background-color: black;
   padding: 1.5em 1.5em;
+  font-size: 15px;
+
+  .first-col {
+    width: 330px;
+
+    &--title {
+      font-size: 19px;
+      margin-bottom: 5px;
+    }
+
+    &--social-media {
+      margin-top: 20px;
+
+      img {
+        margin-right: 12px;
+        width: 24px;
+        height: 24px;
+      }
+    }
+  }
+
 }
 
 .banner {
   position: relative;
   margin-top: 50px;
+
   &__content {
     position: absolute;
-    background-color: rgba(255, 255, 255, 0.7);
     top: 4em;
     left: 2em;
     width: 381px;
     padding: 12px;
-  }
 
-  &__button {
-    position: absolute;
-    top: 22em;
-    left: 1.7em;
-    background-color: #f0ae00;
-    padding: 8px 40px;
-    font-size: 18px;
+    &--text {
+      background-color: rgba(255, 255, 255, 0.7);
+      padding-left: 10px;
+      margin-bottom: 20px;
+    }
 
-    &:hover {
-      color: black !important;
-      background-color: white;
+    &--button {
+      top: 22em;
+      left: 1.7em;
+      background-color: #f0ae00;
+      padding: 8px 40px;
+      font-size: 18px;
+      display: inline-block;
+
+      &:hover {
+        color: black !important;
+        background-color: white;
+      }
     }
   }
 
