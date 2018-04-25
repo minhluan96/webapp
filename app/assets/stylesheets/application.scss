@@ -142,6 +142,11 @@ footer {
     background-color: #f0ae00;
     padding: 8px 40px;
     font-size: 18px;
+
+    &:hover {
+      color: black !important;
+      background-color: white;
+    }
   }
 }
 
