@@ -18,6 +18,7 @@
 
 body {
   max-width: 1000px;
+  min-height: 100%;
   margin: auto;
   font-family: 'Open Sans', sans-serif;
 }
@@ -114,4 +115,10 @@ a:hover {
 
 .pull-right {
   float: right;
+}
+
+footer {
+  color: rgb(238, 238, 238);
+  background-color: black;
+  padding: 1.5em 1.5em;
 }
