@@ -18,12 +18,14 @@
   </div>
 </div>
 <div class="filtered-products">
-  <% @cases.each do |filtered_case| %>
-    <div class="product-item">
-      <img src="<%= filtered_case.image %>">
-      <%= filtered_case.name %><br>
-      <%= filtered_case.formatted_price %>
-    </div>
-  <% end %>
+  <div>
+    <% @cases.each do |filtered_case| %>
+      <div class="product-item">
+        <img src="<%= filtered_case.image %>">
+        <%= filtered_case.name %><br>
+        <%= filtered_case.formatted_price %>
+      </div>
+    <% end %>
+  </div>
   <%= paginate @cases, left: 1, right: 3 %>
 </div>
