@@ -16,6 +16,8 @@
 @import "bootstrap";
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:300');
 
+$orange: #F0AE00;
+
 body {
   width: 1000px;
   min-height: 100%;
@@ -98,7 +100,7 @@ a:hover {
     }
 
     &--cart {
-      fill: #F0AE00;
+      fill: $orange;
       position: absolute;
       right: 0px;
       top: 3em;
@@ -164,7 +166,7 @@ footer {
     &--button {
       top: 22em;
       left: 1.7em;
-      background-color: #f0ae00;
+      background-color: $orange;
       padding: 8px 40px;
       font-size: 18px;
       display: inline-block;
@@ -237,6 +239,7 @@ footer {
 
   &__control {
     margin-top: 15px;
+
     ul {
       list-style: none;
       padding-left: 0;
