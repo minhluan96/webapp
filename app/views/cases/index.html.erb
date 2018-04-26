@@ -5,7 +5,7 @@
   <div class="filter__control">
     Collection
     <ul>
-      <li>
+      <li class="active">
         All
       </li>
       <li>
@@ -25,5 +25,5 @@
       <%= filtered_case.formatted_price %>
     </div>
   <% end %>
-  <%= paginate @cases %>
+  <%= paginate @cases, left: 1, right: 3 %>
 </div>
