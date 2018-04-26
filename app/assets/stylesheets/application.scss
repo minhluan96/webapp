@@ -259,7 +259,7 @@ footer {
   display: inline-block;
 
   .product-item {
-    width: 205px;
+    width: 225px;
     display: inline-block;
     margin: 0px 10px;
     padding: 0 20px;
@@ -277,6 +277,24 @@ footer {
 
     span {
       margin: 0 5px;
+    }
+  }
+
+  .order-control {
+    text-align: right;
+    padding: 38px 40px 0;
+    font-size: 16px;
+    margin-bottom: 5px;
+
+    a {
+      border-width: 1px;
+      border-style: solid;
+      padding: 5px 150px 5px 10px;
+      display: inline-block;
+      background-image: url("dropdown-icon.png");
+      background-repeat: no-repeat;
+      background-size: 18px;
+      background-position: 185px;
     }
   }
 }
