@@ -10,10 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180425091044) do
+ActiveRecord::Schema.define(version: 20180426023659) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "case_categories", force: :cascade do |t|
+    t.bigint "case_id"
+    t.bigint "category_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["case_id", "category_id"], name: "case_category_index"
+    t.index ["case_id"], name: "index_case_categories_on_case_id"
+    t.index ["category_id"], name: "index_case_categories_on_category_id"
+  end
+
+  create_table "case_images", force: :cascade do |t|
+    t.bigint "case_id"
+    t.string "image_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["case_id"], name: "index_case_images_on_case_id"
+  end
 
   create_table "cases", force: :cascade do |t|
     t.string "name"
