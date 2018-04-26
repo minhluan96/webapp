@@ -5,7 +5,7 @@ class Case < ApplicationRecord
   scope :available, -> { where(is_available: true) }
   scope :top_sales, -> { where(is_top_sales: true) }
 
-  paginates_per 12
+  paginates_per 9
 
   def formatted_price
     ActiveSupport::NumberHelper.number_to_currency(price, unit: "VNĐ", delimiter: ",", format: "%n %u", precision: 0)
