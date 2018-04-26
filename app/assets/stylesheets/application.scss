@@ -124,6 +124,7 @@ footer {
   background-color: black;
   padding: 1.5em 1.5em;
   font-size: 15px;
+  margin-top: 20px;
 
   .first-col {
     width: 330px;
@@ -265,13 +266,14 @@ footer {
 
     img {
       width: 205px;
+      height: 205px;
     }
   }
 
   .pagination {
     float: right;
     padding-right: 15px;
-    margin: 20px 0;
+    margin-top: 20px;
 
     span {
       margin: 0 5px;
