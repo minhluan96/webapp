@@ -5,7 +5,7 @@ class CasesController < ApplicationController
 
   def index
     @category_id = params[:category_id].to_i
-    @categories = Category.all
+    @categories = Category.all.order(:name)
     @order = order
     @cases = cases.order(@order)
     @available_orders = build_orders
