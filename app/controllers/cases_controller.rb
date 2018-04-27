@@ -1,6 +1,6 @@
 class CasesController < ApplicationController
   def show
-    @case = Case.includes([:case_images, :case_categories]).where(id: params[:id]).first
+    @case = Case.includes([:case_images, :case_categories]).find(params[:id])
   end
 
   def index
