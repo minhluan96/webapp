@@ -1,0 +1,19 @@
+<div style="padding: 30px 45px 0">
+  <div class="product-image">
+    <img src="<%= @case.image %>" style="margin-bottom: 10px">
+    <div class="thumbnail-list">
+      <% @case.case_images.each do |case_image| %>
+        <img src="<%= case_image.image_url %>" class="thumbnail">
+      <% end %>
+    </div>
+    <p><%= @case.description %></p>
+  </div>
+  <div class="product-detail">
+    <div class="product-detail--title">
+      <%= @case.name %>
+    </div>
+    <div class="product-detail--price">
+      <%= @case.formatted_price %>
+    </div>
+  </div>
+</div>
