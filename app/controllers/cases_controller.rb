@@ -6,7 +6,7 @@ class CasesController < ApplicationController
   def index
     @category_id = params[:category_id].to_i
     @categories = Category.all.order(:name)
-    @order = order
+    @order = Case.column_names.include?(params[:order]) ? params[:order] : ''
     @cases = cases.order(@order)
     @available_orders = build_orders
   end
@@ -15,10 +15,6 @@ class CasesController < ApplicationController
   def page
     page = params[:page].to_i
     page == 0 ? 1 : page
-  end
-
-  def order
-    params[:order]
   end
 
   def cases
