@@ -5,23 +5,37 @@
   <div class="filter__control">
     Collection
     <ul>
-      <li class="active">
-        All
+      <li class="<%= @category_id == 0 ? 'active' : '' %>">
+        <a href="<%= cases_path(order: @order) %>">
+          All
+        </a>
       </li>
-      <li>
-        Iphone 6
-      </li>
-      <li>
-        Iphone 6 Plus
-      </li>
+      <% @categories.each do |category| %>
+        <li class="<%= @category_id == category.id ? 'active' : '' %>">
+          <a href="<%= cases_path(category_id: category.id, order: @order) %>">
+            <%= category.name %>
+          </a>
+        </li>
+      <% end %>
     </ul>
   </div>
 </div>
 <div class="filtered-products">
   <div class="order-control">
-    <a>
-      Newest
-    </a>
+    <div class="dropdown">
+      <a>
+        <%= @order.present? ? @available_orders[@order] : 'Sort by' %>
+      </a>
+      <div class="dropdown-content">
+        <ul>
+          <% @available_orders.each do |k, v| %>
+            <li>
+              <a class="<%= k == @order ? 'active' : '' %>" href="<%= cases_path(category_id: @category_id, order: k) %>"><%= v %></a>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
   </div>
   <div>
     <% @cases.each do |filtered_case| %>

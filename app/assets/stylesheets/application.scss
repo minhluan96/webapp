@@ -247,8 +247,13 @@ footer {
       margin-top: 15px;
       font-size: 14px;
 
+      li {
+        color: rgb(31, 31, 31);
+      }
+
       li.active {
         font-weight: bold;
+        color: black;
       }
     }
   }
@@ -289,12 +294,54 @@ footer {
     a {
       border-width: 1px;
       border-style: solid;
-      padding: 5px 150px 5px 10px;
+      width: 213px;
+      text-align: left;
+      padding: 5px 15px 5px 12px;
       display: inline-block;
       background-image: image-url("dropdown-icon.png");
       background-repeat: no-repeat;
       background-size: 18px;
       background-position: 185px;
+    }
+  }
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+
+  .dropdown-content {
+    position: absolute;
+    border-top: none;
+    z-index: 10;
+    display: none;
+
+    ul {
+      list-style: none;
+      padding: 0;
+      background-color: white;
+
+      li {
+
+        a {
+          border-top: none;
+          border-bottom: none;
+          background: none;
+        }
+
+        a.active {
+          background-image: image-url("checkmark-icon.png");
+          background-repeat: no-repeat;
+          background-size: 28px;
+          background-position: 180px;
+        }
+
+        &:last-of-type {
+          a {
+            border-bottom: 1px solid;
+          }
+        }
+      }
     }
   }
 }

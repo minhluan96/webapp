@@ -15,3 +15,9 @@
 //= require bootstrap
 //= require turbolinks
 //= require_tree .
+
+document.addEventListener("turbolinks:load", function() {
+    $('.dropdown').bind('click', function(){
+        $('.dropdown-content').toggle();
+    });
+});
