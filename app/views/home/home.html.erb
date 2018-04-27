@@ -21,14 +21,16 @@
   </div>
   <div class="products-section__products-list">
     <% @new_cases.each do |new_case| %>
-      <div class="products-section__products-list--product-item">
-        <img src="<%= new_case.image %>">
-        <div class="products-section__products-list--product-item--title">
-          <%= new_case.name %>
-          <br>
-          <%= new_case.formatted_price %>
+      <a href="<%= case_path(new_case) %>">
+        <div class="products-section__products-list--product-item">
+          <img src="<%= new_case.image %>">
+          <div class="products-section__products-list--product-item--title">
+            <%= new_case.name %>
+            <br>
+            <%= new_case.formatted_price %>
+          </div>
         </div>
-      </div>
+      </a>
     <% end %>
   </div>
 </div>
@@ -38,14 +40,16 @@
   </div>
   <div class="products-section__products-list">
     <% @top_sales_cases.each do |top_sales_case| %>
-      <div class="products-section__products-list--product-item">
-        <img src="<%= top_sales_case.image %>">
-        <div class="products-section__products-list--product-item--title">
-          <%= top_sales_case.name %>
-          <br>
-          <%= top_sales_case.formatted_price %>
+      <a href="<%= case_path(top_sales_case) %>">
+        <div class="products-section__products-list--product-item">
+          <img src="<%= top_sales_case.image %>">
+          <div class="products-section__products-list--product-item--title">
+            <%= top_sales_case.name %>
+            <br>
+            <%= top_sales_case.formatted_price %>
+          </div>
         </div>
-      </div>
+      </a>
     <% end %>
   </div>
 </div>
