@@ -6,6 +6,10 @@ class Admin::CasesController < ApplicationController
 
   end
 
+  def edit
+
+  end
+
   def index
     @cases = Case.includes(:case_categories).all
   end

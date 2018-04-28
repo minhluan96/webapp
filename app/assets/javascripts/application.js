@@ -21,7 +21,11 @@ document.addEventListener("turbolinks:load", function() {
     $('.dropdown').bind('click', function(){
         $('.dropdown-content').toggle();
     });
-    $('.datatable').DataTable({
-        "pageLength": 25
+    var dataTable = $('.datatable').DataTable({
+        "pageLength": 50
+    });
+
+    document.addEventListener("turbolinks:before-cache", function() {
+        dataTable.destroy();
     });
 });

@@ -13,7 +13,7 @@
   <% @cases.each do |available_case| %>
     <tr>
       <td><%= available_case.name %></td>
-      <td><%= available_case.price %></td>
+      <td><%= available_case.formatted_price %></td>
       <td><%= available_case.case_categories.includes(:category).map(&:category).map(&:name).join(', ') %></td>
       <th>
         <input type="checkbox" data-case-id="<%= available_case.id %>" <%= available_case.is_top_sales ? 'checked' : '' %> class="is_top_sales">
@@ -22,7 +22,8 @@
         <input type="checkbox" data-case-id="<%= available_case.id %>" <%= available_case.is_available ? 'checked' : '' %> class="is_available">
       </th>
       <td>
-        <%= link_to "Delete", admin_case_path(available_case), method: :delete, data: {confirm: 'Do you want to delete?'} %>
+        <%= link_to "Delete", admin_case_path(available_case), method: :delete, data: {confirm: 'Do you want to delete?'} %> |
+        <%= link_to "Edit", edit_admin_case_path(available_case) %>
       </td>
     </tr>
   <% end %>
