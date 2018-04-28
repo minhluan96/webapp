@@ -35,8 +35,10 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootstrap', '~> 4.1.0'
 gem 'jquery-rails'
 gem 'devise'
+gem "cancan"
 gem 'kaminari'
 gem "breadcrumbs_on_rails"
+gem "rolify"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
