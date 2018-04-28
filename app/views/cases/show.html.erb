@@ -1,4 +1,17 @@
-<div style="padding: 30px 45px 0">
+<div class="navigation clearfix">
+  <div class="navigation--breadcrumb">
+    <%= render_breadcrumbs :separator => ' / ' %>
+  </div>
+  <div class="pull-right">
+    <a href="<%= @case.previous ? case_path(@case.previous) : '' %>">
+      <span><i class="material-icons">keyboard_arrow_left</i>Prev</span>
+    </a> |
+    <a href="<%= @case.next ? case_path(@case.next) : '' %>">
+      <span>Next<i class="material-icons">keyboard_arrow_right</i></span>
+    </a>
+  </div>
+</div>
+<div style="padding: 20px 45px 0">
   <div class="product-image">
     <img src="<%= @case.image %>" style="margin-bottom: 10px" id="big-image">
     <div class="thumbnail-list">
@@ -16,13 +29,21 @@
     <div class="product-detail--price">
       <%= @case.formatted_price %>
     </div>
+    <div class="product-detail--quantity">
+      <div class="product-detail--quantity--title">
+        Quantity
+      </div>
+      <% @case.case_categories.each do |case_category| %>
+        <%= case_category.category.name %>: <%= case_category.quantity %>
+      <% end %>
+    </div>
   </div>
 </div>
 <script>
-  $('.thumbnail').click(function () {
-     image = $(this).attr('src');
-     $('.thumbnail').removeClass('active');
-     $(this).addClass('active');
-     $('#big-image').attr('src', image);
-  });
+    $('.thumbnail').click(function () {
+        image = $(this).attr('src');
+        $('.thumbnail').removeClass('active');
+        $(this).addClass('active');
+        $('#big-image').attr('src', image);
+    });
 </script>

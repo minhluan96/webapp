@@ -1,6 +1,10 @@
 class CasesController < ApplicationController
+  add_breadcrumb "Home", :root_path
+  add_breadcrumb "Shop", :cases_path
+
   def show
     @case = Case.includes([:case_images, :case_categories]).find(params[:id])
+    add_breadcrumb @case.name
   end
 
   def index

@@ -15,6 +15,7 @@
  */
 @import "bootstrap";
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:300');
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 
 $orange: #F0AE00;
 
@@ -367,7 +368,7 @@ footer {
       margin-right: 10px;
     }
 
-    .thumbnail.active{
+    .thumbnail.active {
       border: 2px solid;
     }
   }
@@ -386,5 +387,34 @@ footer {
 
   &--price {
 
+  }
+
+  &--quantity {
+    margin-top: 20px;
+
+    &--title {
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+  }
+}
+
+.navigation {
+  padding: 20px 45px 0;
+  font-size: 14px;
+
+  .material-icons {
+    position: relative;
+    top: 8px;
+  }
+
+  &--breadcrumb {
+    display: inline-block;
+  }
+
+  .pull-right {
+    position: relative;
+    top: -8px;
   }
 }
