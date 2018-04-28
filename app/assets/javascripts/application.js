@@ -22,7 +22,7 @@ document.addEventListener("turbolinks:load", function() {
         $('.dropdown-content').toggle();
     });
     var dataTable = $('.datatable').DataTable({
-        "pageLength": 50
+        "pageLength": 25
     });
 
     document.addEventListener("turbolinks:before-cache", function() {
