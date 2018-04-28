@@ -19,11 +19,16 @@
 
 $orange: #F0AE00;
 
+html {
+  height: 102%;
+}
+
 body {
   width: 1000px;
   min-height: 100%;
   margin: auto;
   font-family: 'Open Sans', sans-serif;
+  position: relative;
 }
 
 a {
@@ -120,12 +125,18 @@ a:hover {
   float: right;
 }
 
+.body {
+  padding-bottom: 170px;
+}
+
 footer {
+  position: absolute;
+  bottom: 0;
   color: rgb(238, 238, 238);
   background-color: black;
   padding: 1.5em 1.5em;
   font-size: 15px;
-  margin-top: 20px;
+  width: 100%;
 
   .first-col {
 
