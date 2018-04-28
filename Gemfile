@@ -38,6 +38,7 @@ gem 'kaminari'
 gem "breadcrumbs_on_rails"
 gem "rolify"
 gem 'pg'
+gem 'jquery-datatables-rails', '~> 3.4.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

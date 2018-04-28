@@ -1,0 +1,58 @@
+<table class="display datatable">
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Price</th>
+    <th>Category</th>
+    <th>Top Sales</th>
+    <td>Available</td>
+    <th></th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @cases.each do |available_case| %>
+    <tr>
+      <td><%= available_case.name %></td>
+      <td><%= available_case.price %></td>
+      <td><%= available_case.case_categories.includes(:category).map(&:category).map(&:name).join(', ') %></td>
+      <th>
+        <input type="checkbox" data-case-id="<%= available_case.id %>" <%= available_case.is_top_sales ? 'checked' : '' %> class="is_top_sales">
+      </th>
+      <th>
+        <input type="checkbox" data-case-id="<%= available_case.id %>" <%= available_case.is_available ? 'checked' : '' %> class="is_available">
+      </th>
+      <td>
+        <%= link_to "Delete", admin_case_path(available_case), method: :delete, data: {confirm: 'Do you want to delete?'} %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+<script>
+    $(".is_top_sales").click(function () {
+        id = $(this).data('case-id')
+        $.ajax({
+            url: '/admin/cases/toggle_top_sales',
+            headers: {
+                'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+            },
+            method: 'POST',
+            data: {
+                id: id
+            }
+        });
+    });
+    $(".is_available").click(function () {
+        id = $(this).data('case-id')
+        $.ajax({
+            url: '/admin/cases/toggle_is_available',
+            headers: {
+                'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+            },
+            method: 'POST',
+            data: {
+                id: id
+            }
+        });
+    });
+</script>

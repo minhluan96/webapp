@@ -5,6 +5,11 @@ Rails.application.routes.draw do
   resources 'cases'
 
   namespace :admin do
-    resources 'cases'
+    resources 'cases' do
+      collection do
+        post 'toggle_top_sales'
+        post 'toggle_is_available'
+      end
+    end
   end
 end
