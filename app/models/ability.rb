@@ -30,7 +30,5 @@ class Ability
     # See the wiki for details:
     # https://github.com/ryanb/cancan/wiki/Defining-Abilities
     @user = current_user || User.new
-    User.create!({:email => "admin@gmail.com", :password => "123123123", :password_confirmation => "123123123" })
-
   end
 end
