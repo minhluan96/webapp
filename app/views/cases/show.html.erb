@@ -34,7 +34,9 @@
         Quantity
       </div>
       <% @case.case_categories.each do |case_category| %>
-        <%= case_category.category.name %>: <%= case_category.quantity %>
+        <div class="product-detail--quantity--category-item">
+          <%= case_category.category.name %>: <%= case_category.quantity %>
+        </div>
       <% end %>
     </div>
   </div>
