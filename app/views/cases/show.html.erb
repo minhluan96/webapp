@@ -33,7 +33,7 @@
       <div class="product-detail--quantity--title">
         Quantity
       </div>
-      <% @case.case_categories.each do |case_category| %>
+      <% @case.case_categories.includes(:category).order('categories.name').each do |case_category| %>
         <div class="product-detail--quantity--category-item">
           <%= case_category.category.name %>: <%= case_category.quantity %>
         </div>
