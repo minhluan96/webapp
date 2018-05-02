@@ -1,0 +1,48 @@
+<%= form_for @case, url: {action: "update"}, html: {class: 'input-form'} do |f| %>
+  <div class="input-control">
+    <label>Name:</label>
+    <%= f.text_field :name %>
+  </div>
+  <div class="input-control image">
+    <label>Image:</label>
+    <% ([@case.image] + @case.case_images.pluck(:image_url)).each do |case_image| %>
+      <input type="text" name="image[]" value="<%= case_image %>">
+    <% end %>
+    <input type="text" name="image[]">
+  </div>
+  <div class="input-control">
+    <label>Price:</label>
+    <%= f.text_field :price %>
+  </div>
+  <div class="input-control">
+    <label>Description:</label>
+    <%= f.text_area :description %>
+  </div>
+  <div class="input-control">
+    <label>Category:</label>
+    <div class="input-area">
+      <% Category.all.each do |category| %>
+        <div class="input-control">
+          <label><%= category.name %>:</label>
+          <input type="text" name="case[category[<%= category.id %>]]" value="<%= @case.case_categories.where(category_id: category.id).first.try(:quantity) %>">
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="input-control">
+    <label>Sale:</label>
+    <input type="checkbox" name="case[is_in_sale]" <%= @case.is_in_sale ? 'checked' : '' %>>
+  </div>
+  <div class="input-control">
+    <label>Sale Price:</label>
+    <%= f.text_field :sale_price %>
+  </div>
+  <%= f.submit "Update" %>
+<% end %>
+<script>
+    $('input[name="image[]"]').focusout(function () {
+        if ($(this).val() != '') {
+            $(this).parents('.input-control').append($(this).clone(true).val(''))
+        };
+    });
+</script>

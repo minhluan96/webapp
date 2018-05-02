@@ -11,14 +11,8 @@ class Admin::CasesController < ApplicationController
 
   def create
     ActiveRecord::Base.transaction do
-      @case = Case.new()
-      @case.name = case_params[:name]
-      @case.price = case_params[:price]
-      @case.description = case_params[:description]
-      @case.is_in_sale = case_params[:is_in_sale] == 'on'
-      @case.sale_price = case_params[:sale_price]
-      @case.image = image_urls.shift
-      @case.save
+      @case = Case.new
+      update_case_with_params
       image_urls.each do |case_image|
         CaseImage.create(case_id: @case.id, image_url: case_image)
       end
@@ -30,7 +24,24 @@ class Admin::CasesController < ApplicationController
   end
 
   def edit
+    @case = Case.includes([:case_categories, :case_images]).find(params[:id])
+  end
 
+  def update
+    @case = Case.find(params[:id])
+    ActiveRecord::Base.transaction do
+      update_case_with_params
+      @case.case_images.destroy_all
+      image_urls.each do |case_image|
+        CaseImage.create(case_id: @case.id, image_url: case_image)
+      end
+
+      @case.case_categories.destroy_all
+      case_categories.each do |k, v|
+        CaseCategory.create(case_id: @case.id, category_id: k, quantity: v)
+      end
+    end
+    redirect_to admin_cases_path
   end
 
   def index
@@ -58,10 +69,20 @@ class Admin::CasesController < ApplicationController
   end
 
   def image_urls
-    params[:image].reject(&:blank?)
+    @image_urls ||= params[:image].reject(&:blank?)
   end
 
   def case_categories
     params[:case][:category]
+  end
+
+  def update_case_with_params
+    @case.name = case_params[:name]
+    @case.price = case_params[:price]
+    @case.description = case_params[:description]
+    @case.is_in_sale = case_params[:is_in_sale] == 'on'
+    @case.sale_price = case_params[:sale_price]
+    @case.image = image_urls.shift
+    @case.save!
   end
 end
