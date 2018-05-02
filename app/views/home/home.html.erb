@@ -27,7 +27,12 @@
           <div class="products-section__products-list--product-item--title">
             <%= new_case.name %>
             <br>
-            <%= new_case.formatted_price %>
+            <% unless new_case.is_in_sale %>
+              <%= new_case.formatted_price %>
+            <% else %>
+              <span style="text-decoration: line-through; color: #5A5A5A;"><%= new_case.formatted_price %></span>
+              <span><%= new_case.formatted_sale_price %></span>
+            <% end %>
           </div>
         </div>
       </a>
@@ -46,7 +51,15 @@
           <div class="products-section__products-list--product-item--title">
             <%= top_sales_case.name %>
             <br>
-            <%= top_sales_case.formatted_price %>
+            <% unless top_sales_case.is_in_sale %>
+              <%= top_sales_case.formatted_price %>
+            <% else %>
+              <div class="products-section__products-list--product-item--ribbon">
+                Sale!
+              </div>
+              <span style="text-decoration: line-through; color: #5A5A5A;"><%= top_sales_case.formatted_price %></span>
+              <span><%= top_sales_case.formatted_sale_price %></span>
+            <% end %>
           </div>
         </div>
       </a>
