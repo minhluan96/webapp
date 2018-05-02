@@ -14,6 +14,7 @@
 //= require jquery3
 //= require bootstrap
 //= require dataTables/jquery.dataTables
+//= require owl.carousel
 //= require turbolinks
 //= require_tree .
 
@@ -29,4 +30,21 @@ document.addEventListener("turbolinks:load", function() {
     document.addEventListener("turbolinks:before-cache", function() {
         dataTable.destroy();
     });
+
+    $(".owl-carousel").owlCarousel({
+        loop: true,
+        items: 4
+    });
+
+    $('.products-section--left-arrow').bind('click', function () {
+       owl = $(this).parents('.products-section').find('.owl-carousel');
+       owl.trigger('prev.owl.carousel')
+    });
+
+    $('.products-section--right-arrow').bind('click', function () {
+        owl = $(this).parents('.products-section').find('.owl-carousel');
+        owl.trigger('next.owl.carousel')
+    });
 });
+
+
