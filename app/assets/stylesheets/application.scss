@@ -283,10 +283,21 @@ footer {
     margin: 0px 10px;
     padding: 0 20px;
     margin-bottom: 25px;
+    position: relative;
 
     img {
       width: 205px;
       height: 205px;
+    }
+
+    .sale-ribbon {
+      position: absolute;
+      background-color: $orange;
+      color: white;
+      display: inline-block;
+      padding: 1px 10px;
+      top: 10px;
+      font-weight: bold;
     }
   }
 

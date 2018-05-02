@@ -27,7 +27,12 @@
       <%= @case.name %>
     </div>
     <div class="product-detail--price">
-      <%= @case.formatted_price %>
+      <% unless @case.is_in_sale %>
+        <%= @case.formatted_price %>
+      <% else %>
+        <span style="text-decoration: line-through; color: #5A5A5A;"><%= @case.formatted_price %></span>
+        <span><%= @case.formatted_sale_price %></span>
+      <% end %>
     </div>
     <div class="product-detail--quantity">
       <div class="product-detail--quantity--title">

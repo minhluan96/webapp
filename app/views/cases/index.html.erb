@@ -47,6 +47,9 @@
             <% unless filtered_case.is_in_sale %>
               <%= filtered_case.formatted_price %>
             <% else %>
+              <div class="sale-ribbon">
+                Sale!
+              </div>
               <span style="text-decoration: line-through; color: #5A5A5A;"><%= filtered_case.formatted_price %></span>
               <span><%= filtered_case.formatted_sale_price %></span>
             <% end %>
