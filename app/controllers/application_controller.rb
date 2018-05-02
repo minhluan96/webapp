@@ -21,4 +21,8 @@ class ApplicationController < ActionController::Base
   def authorize_admin
     raise CanCan::AccessDenied unless current_user.is_admin?
   end
+
+  def current_ability
+    @current_ability ||= Ability.new(current_user)
+  end
 end

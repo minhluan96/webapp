@@ -446,3 +446,24 @@ footer {
     line-height: 90px;
   }
 }
+
+.input-form {
+  padding: 10%;
+
+  .input-control {
+    width: 100%;
+    display: table;
+    margin-bottom: 10px;
+
+    label {
+      display: table-cell;
+      width: 15%;
+      vertical-align: top;
+    }
+
+    input:not([type='checkbox']), textarea, .input-area {
+      display: table-cell;
+      width: 100%;
+    }
+  }
+}

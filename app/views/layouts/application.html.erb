@@ -36,6 +36,10 @@
     <ul>
       <li class="<%= current_class(root_path) %>"><a href="<%= root_path %>">Home</a></li>
       <li class="<%= current_class(cases_path) %>"><a href="<%= cases_path %>">Shop</a></li>
+      <% if user_signed_in? && current_user.is_admin? %>
+        <li class="<%= current_class(admin_cases_path) %>"><a href="<%= admin_cases_path %>">Manage Case</a></li>
+        <li class="<%= current_class(new_admin_case_path) %>"><a href="<%= new_admin_case_path %>">New Case</a></li>
+      <% end %>
     </ul>
     <div class="pull-right">
       Call Us <%= I18n.t("contact_phone") %>
