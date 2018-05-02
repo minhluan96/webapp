@@ -13,12 +13,7 @@ class Admin::CasesController < ApplicationController
     ActiveRecord::Base.transaction do
       @case = Case.new
       update_case_with_params
-      image_urls.each do |case_image|
-        CaseImage.create(case_id: @case.id, image_url: case_image)
-      end
-      case_categories.each do |k, v|
-        CaseCategory.create(case_id: @case.id, category_id: k, quantity: v)
-      end
+      update_image_and_category
     end
     redirect_to admin_cases_path
   end
@@ -32,14 +27,8 @@ class Admin::CasesController < ApplicationController
     ActiveRecord::Base.transaction do
       update_case_with_params
       @case.case_images.destroy_all
-      image_urls.each do |case_image|
-        CaseImage.create(case_id: @case.id, image_url: case_image)
-      end
-
       @case.case_categories.destroy_all
-      case_categories.each do |k, v|
-        CaseCategory.create(case_id: @case.id, category_id: k, quantity: v)
-      end
+      update_image_and_category
     end
     redirect_to admin_cases_path
   end
@@ -84,5 +73,15 @@ class Admin::CasesController < ApplicationController
     @case.sale_price = case_params[:sale_price]
     @case.image = image_urls.shift
     @case.save!
+  end
+
+  def update_image_and_category
+    image_urls.each do |case_image|
+      CaseImage.create(case_id: @case.id, image_url: case_image)
+    end
+    case_categories.each do |k, v|
+      next unless v.present?
+      CaseCategory.create(case_id: @case.id, category_id: k, quantity: v)
+    end
   end
 end

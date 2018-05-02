@@ -44,7 +44,12 @@
           <img src="<%= filtered_case.image %>">
           <div style="font-size: 14px; margin-top: 5px">
             <%= filtered_case.name %><br>
-            <%= filtered_case.formatted_price %>
+            <% unless filtered_case.is_in_sale %>
+              <%= filtered_case.formatted_price %>
+            <% else %>
+              <span style="text-decoration: line-through; color: #5A5A5A;"><%= filtered_case.formatted_price %></span>
+              <span><%= filtered_case.formatted_sale_price %></span>
+            <% end %>
           </div>
         </div>
       </a>

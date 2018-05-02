@@ -470,3 +470,13 @@ footer {
     }
   }
 }
+
+.pill-button {
+  background-color: $orange;
+  color: white;
+  padding: 8px 40px;
+  font-size: 18px;
+  display: inline-block;
+  border-radius: 2px;
+  margin-bottom: 10px;
+}
