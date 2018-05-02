@@ -42,8 +42,10 @@
       <a href="<%= case_path(filtered_case) %>">
         <div class="product-item">
           <img src="<%= filtered_case.image %>">
-          <%= filtered_case.name %><br>
-          <%= filtered_case.formatted_price %>
+          <div style="font-size: 14px; margin-top: 5px">
+            <%= filtered_case.name %><br>
+            <%= filtered_case.formatted_price %>
+          </div>
         </div>
       </a>
     <% end %>
