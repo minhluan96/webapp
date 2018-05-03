@@ -33,7 +33,8 @@ document.addEventListener("turbolinks:load", function() {
 
     $(".owl-carousel").owlCarousel({
         loop: true,
-        items: 4
+        items: 4,
+        slideSpeed: 200
     });
 
     $('.products-section--left-arrow').bind('click', function () {
