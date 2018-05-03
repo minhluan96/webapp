@@ -1,6 +1,7 @@
 class Case < ApplicationRecord
   has_many :case_categories, dependent: :destroy
   has_many :case_images, dependent: :destroy
+  has_many :case_videos, dependent: :destroy
 
   scope :available, -> {where(is_available: true)}
   scope :top_sales, -> {where(is_top_sales: true)}
