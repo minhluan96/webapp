@@ -20,7 +20,6 @@
         <img src="<%= case_image.image_url %>" class="thumbnail">
       <% end %>
     </div>
-    <p><%= @case.description %></p>
   </div>
   <div class="product-detail">
     <div class="product-detail--title">
@@ -43,6 +42,12 @@
           <%= case_category.category.name %>: <%= case_category.quantity %>
         </div>
       <% end %>
+    </div>
+    <div class="product-detail--quantity">
+      <div class="product-detail--quantity--title">
+        Description
+      </div>
+      <p style="font-size: 14px;"><%= @case.description %></p>
     </div>
   </div>
 </div>
