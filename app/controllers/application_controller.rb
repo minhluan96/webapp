@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
   end
 
   def authorize_admin
-    raise CanCan::AccessDenied unless current_user.is_admin?
+    authorize! :manage, :all
   end
 
   def current_ability

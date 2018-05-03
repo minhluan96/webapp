@@ -36,7 +36,7 @@
     <ul>
       <li class="<%= current_class(root_path) %>"><a href="<%= root_path %>">Home</a></li>
       <li class="<%= current_class(cases_path) %>"><a href="<%= cases_path %>">Shop</a></li>
-      <% if user_signed_in? && current_user.is_admin? %>
+      <% if can?(:manager, :cases) %>
         <li class="<%= current_class(admin_cases_path) %>"><a href="<%= admin_cases_path %>">Manage Case</a></li>
       <% end %>
     </ul>

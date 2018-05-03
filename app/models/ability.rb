@@ -30,5 +30,8 @@ class Ability
     # See the wiki for details:
     # https://github.com/ryanb/cancan/wiki/Defining-Abilities
     @user = current_user || User.new
+    if @user.is_admin?
+      can :manage, :all
+    end
   end
 end
