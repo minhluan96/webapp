@@ -3,10 +3,10 @@
     <%= render_breadcrumbs :separator => ' / ' %>
   </div>
   <div class="pull-right">
-    <a href="<%= @case.previous ? case_path(@case.previous) : '' %>">
+    <a href="<%= @case.previous ? case_path(@case.previous) : 'javascript:void(0)' %>">
       <span><i class="material-icons">keyboard_arrow_left</i>Prev</span>
     </a> |
-    <a href="<%= @case.next ? case_path(@case.next) : '' %>">
+    <a href="<%= @case.next ? case_path(@case.next) : 'javascript:void(0)' %>">
       <span>Next<i class="material-icons">keyboard_arrow_right</i></span>
     </a>
   </div>

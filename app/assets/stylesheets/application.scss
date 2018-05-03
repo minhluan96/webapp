@@ -275,8 +275,6 @@ footer {
   &__title {
     font-weight: 400;
     font-size: 26px;
-    border-bottom: 0.5px solid #1F1F1F;
-    padding-bottom: 15px;
   }
 
   &__control {
@@ -309,7 +307,7 @@ footer {
     display: inline-block;
     margin: 0px 10px;
     padding: 0 20px;
-    margin-bottom: 25px;
+    margin-bottom: 15px;
     position: relative;
 
     img {
@@ -331,7 +329,7 @@ footer {
   .pagination {
     float: right;
     padding-right: 15px;
-    margin-top: 20px;
+    margin-bottom: 10px;
 
     span {
       margin: 0 5px;
@@ -519,4 +517,13 @@ footer {
   display: inline-block;
   border-radius: 2px;
   margin-bottom: 10px;
+}
+
+.devider {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 1.5em 0;
+  padding: 0;
 }

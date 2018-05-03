@@ -2,8 +2,9 @@
   <div class="filter__title">
     Shop by
   </div>
+  <div class="devider"></div>
   <div class="filter__control">
-    Collection
+    <span style="font-weight: bold">Collection</span>
     <ul>
       <li class="<%= @category_id == 0 ? 'active' : '' %>">
         <a href="<%= cases_path(order: @order) %>">
@@ -19,6 +20,24 @@
       <% end %>
     </ul>
   </div>
+<!--  <div class="devider"></div>-->
+<!--  <div class="filter__control">-->
+<!--    <span style="font-weight: bold">Filter</span>-->
+<!--    <ul>-->
+<!--      <li class="<%#= @category_id == 0 ? 'active' : '' %>">-->
+<!--        <a href="<%#= cases_path(order: @order) %>">-->
+<!--          All-->
+<!--        </a>-->
+<!--      </li>-->
+      <%# @categories.each do |category| %>
+<!--        <li class="<%#= @category_id == category.id ? 'active' : '' %>">-->
+<!--          <a href="<%#= cases_path(category_id: category.id, order: @order) %>">-->
+            <%#= category.name %>
+<!--          </a>-->
+<!--        </li>-->
+      <%# end %>
+<!--    </ul>-->
+<!--  </div>-->
 </div>
 <div class="filtered-products">
   <div class="order-control">
