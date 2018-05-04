@@ -210,12 +210,14 @@ footer {
 }
 
 .black-block {
-  margin: 15px 0;
+  margin-bottom: 25px;
+  margin-top: 40px;
   background-color: black;
   color: white;
   padding: 10px 20px;
   text-align: center;
   font-size: 19px;
+  font-weight: bold;
 }
 
 .products-section {
@@ -226,13 +228,13 @@ footer {
   &--left-arrow {
     position: absolute;
     left: 0;
-    top: 50%;
+    top: 40%;
   }
 
   &--right-arrow {
     position: absolute;
     right: 0;
-    top: 50%;
+    top: 40%;
   }
 
   &__title {
@@ -241,7 +243,8 @@ footer {
   }
 
   &__products-list {
-    margin: 30px 0;
+    margin-bottom: 30px;
+    margin-top: 10px;
 
     &--product-item {
       display: inline-block;
