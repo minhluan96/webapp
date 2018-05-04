@@ -19,10 +19,6 @@
 //= require_tree .
 
 document.addEventListener("turbolinks:load", function() {
-    $('.dropdown').bind('click', function(){
-        $('.dropdown-content').toggle();
-    });
-
     var dataTable = $('.datatable').DataTable({
         "pageLength": 25
     });
@@ -47,5 +43,3 @@ document.addEventListener("turbolinks:load", function() {
         owl.trigger('next.owl.carousel')
     });
 });
-
-

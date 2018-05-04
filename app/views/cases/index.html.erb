@@ -1,4 +1,5 @@
 <div class="filter">
+  <input type="hidden" name="filter_url" value="<%= request.base_url %><%= filter_cases_cases_path(build_url_params) %>">
   <div class="filter__title">
     Shop by
   </div>
@@ -6,76 +7,79 @@
   <div class="filter__control">
     <span style="font-weight: bold">Collection</span>
     <ul>
-      <li class="<%= @category_id == 0 ? 'active' : '' %>">
-        <a href="<%= cases_path(order: @order) %>">
+      <li class="active">
+        <a href="" data-name="category_id" data-value="0">
           All
         </a>
       </li>
       <% @categories.each do |category| %>
-        <li class="<%= @category_id == category.id ? 'active' : '' %>">
-          <a href="<%= cases_path(category_id: category.id, order: @order) %>">
+        <li>
+          <a href="" data-name="category_id" data-value="<%= category.id %>">
             <%= category.name %>
           </a>
         </li>
       <% end %>
     </ul>
   </div>
-<!--  <div class="devider"></div>-->
-<!--  <div class="filter__control">-->
-<!--    <span style="font-weight: bold">Filter</span>-->
-<!--    <ul>-->
-<!--      <li class="<%#= @category_id == 0 ? 'active' : '' %>">-->
-<!--        <a href="<%#= cases_path(order: @order) %>">-->
-<!--          All-->
-<!--        </a>-->
-<!--      </li>-->
-      <%# @categories.each do |category| %>
-<!--        <li class="<%#= @category_id == category.id ? 'active' : '' %>">-->
-<!--          <a href="<%#= cases_path(category_id: category.id, order: @order) %>">-->
-            <%#= category.name %>
-<!--          </a>-->
-<!--        </li>-->
-      <%# end %>
-<!--    </ul>-->
-<!--  </div>-->
-</div>
-<div class="filtered-products">
-  <div class="order-control">
-    <div class="dropdown">
-      <a>
-        <%= @order.present? ? @available_orders[@order] : 'Sort by' %>
-      </a>
-      <div class="dropdown-content">
-        <ul>
-          <% @available_orders.each do |k, v| %>
-            <li>
-              <a class="<%= k == @order ? 'active' : '' %>" href="<%= cases_path(category_id: @category_id, order: k) %>"><%= v %></a>
-            </li>
-          <% end %>
-        </ul>
-      </div>
-    </div>
+  <div class="devider"></div>
+  <div class="filter__control materialize">
+    <span style="font-weight: bold">Filter</span>
+    <p>
+      <label>
+        <input type="checkbox" data-name="is_available"/>
+        <span>Còn hàng</span>
+      </label>
+    </p>
+    <p>
+      <label>
+        <input type="checkbox" data-name="is_sale"/>
+        <span>Giảm giá</span>
+      </label>
+    </p>
   </div>
-  <div>
-    <% @cases.each do |filtered_case| %>
-      <a href="<%= case_path(filtered_case) %>">
-        <div class="product-item">
-          <img src="<%= filtered_case.image %>">
-          <div style="font-size: 14px; margin-top: 5px">
-            <%= filtered_case.name %><br>
-            <% unless filtered_case.is_in_sale %>
-              <%= filtered_case.formatted_price %>
-            <% else %>
-              <div class="sale-ribbon">
-                Sale!
-              </div>
-              <span style="text-decoration: line-through; color: #5A5A5A;"><%= filtered_case.formatted_price %></span>
-              <span><%= filtered_case.formatted_sale_price %></span>
-            <% end %>
-          </div>
-        </div>
-      </a>
+  <div class="devider"></div>
+  <div class="filter__control materialize">
+    <span style="font-weight: bold">Order</span>
+    <% @available_orders.each do |k, v| %>
+      <p>
+        <label>
+          <input name="order" type="radio" data-name="order" data-value="<%= k %>" <%= k == @order ? 'checked' : '' %>/>
+          <span><%= v %></span>
+        </label>
+      </p>
     <% end %>
   </div>
-  <%= paginate @cases, left: 1, right: 3 %>
 </div>
+<div class="filtered-products">
+  <%= render 'filtered_products', locals: {cases: @cases, available_orders: @available_orders, category_id: @category_id} %>
+</div>
+<script>
+    $("input[type='checkbox']").change(function () {
+        $(this).data('value', $(this).is(':checked'))
+        reloadFilteredCases(this);
+    });
+
+    $("input[type='radio']").change(function () {
+        reloadFilteredCases(this);
+    });
+
+    $(".filter a").click(function (event) {
+        event.preventDefault();
+        reloadFilteredCases(this);
+        $('li').removeClass('active');
+        $(this).parents('li').addClass('active');
+    });
+
+    function reloadFilteredCases(element) {
+        url_container = $('input[name="filter_url"]')
+        url_string = url_container.val();
+        var filter_name = $(element).data('name');
+        var filter_value = $(element).data('value');
+        var url = new URL(url_string);
+        url.searchParams.set(filter_name, filter_value);
+        url_container.val(url.href);
+        $('.filtered-products').load(url.href, function (data) {
+            $(this).html(data);
+        });
+    };
+</script>
