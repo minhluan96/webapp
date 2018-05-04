@@ -34,14 +34,14 @@
       <% end %>
     </div>
     <div class="product-detail--quantity">
-      <div class="product-detail--quantity--title">
-        Quantity
+      <div class="materialize">
+        <% @case.case_categories.includes(:category).order('categories.name').each do |case_category| %>
+          <div class="chip">
+            <%= case_category.category.name %>
+            <i class="close material-icons">phone_iphone</i>
+          </div>
+        <% end %>
       </div>
-      <% @case.case_categories.includes(:category).order('categories.name').each do |case_category| %>
-        <div class="product-detail--quantity--category-item">
-          <%= case_category.category.name %>: <%= case_category.quantity %>
-        </div>
-      <% end %>
     </div>
     <div class="product-detail--quantity">
       <div class="product-detail--quantity--title">
