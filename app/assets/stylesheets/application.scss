@@ -340,6 +340,11 @@ footer {
     padding: 0 20px;
     margin-bottom: 15px;
     position: relative;
+    font-size: 14px;
+
+    &--text {
+      margin-top: 5px;
+    }
 
     img {
       width: 205px;
@@ -355,6 +360,11 @@ footer {
       top: 10px;
       font-weight: bold;
       font-size: 12px;
+    }
+
+    .not-available-ribbon {
+      @extend .sale-ribbon;
+      background-color: red;
     }
   }
 
@@ -512,6 +522,7 @@ footer {
 
   &--quantity {
     margin-top: 20px;
+    font-size: 14px;
 
     &--title {
       font-size: 20px;
@@ -927,7 +938,7 @@ footer {
     height: 32px;
     font-size: 13px;
     font-weight: 500;
-    color: rgba(0,0,0,.6);
+    color: rgba(0, 0, 0, .6);
     line-height: 32px;
     padding: 0 12px;
     border-radius: 16px;
@@ -973,7 +984,7 @@ footer {
     .input {
       background: none;
       border: 0;
-      color: rgba(0,0,0,.6);
+      color: rgba(0, 0, 0, .6);
       display: inline-block;
       font-size: $input-font-size;
       height: $input-height;
@@ -1002,10 +1013,17 @@ footer {
     width: 92%;
     width: calc(100% - 3rem);
   }
-  .chips:empty ~ label  {
+  .chips:empty ~ label {
     font-size: 0.8rem;
     transform: translateY(-140%);
   }
+}
 
+.bold {
+  font-weight: bold;
+}
 
+.old-price {
+  text-decoration: line-through;
+  color: #5A5A5A;
 }

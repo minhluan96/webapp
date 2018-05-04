@@ -40,7 +40,7 @@
               <div class="products-section__products-list--product-item--ribbon">
                 Sale!
               </div>
-              <span style="text-decoration: line-through; color: #5A5A5A;"><%= new_case.formatted_price %></span>
+              <span class="old-price"><%= new_case.formatted_price %></span>
               <span><%= new_case.formatted_sale_price %></span>
             <% end %>
           </div>
@@ -77,7 +77,7 @@
               <div class="products-section__products-list--product-item--ribbon">
                 Sale!
               </div>
-              <span style="text-decoration: line-through; color: #5A5A5A;"><%= top_sales_case.formatted_price %></span>
+              <span class="old-price"><%= top_sales_case.formatted_price %></span>
               <span><%= top_sales_case.formatted_sale_price %></span>
             <% end %>
           </div>

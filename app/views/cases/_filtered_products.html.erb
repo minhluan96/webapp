@@ -3,22 +3,21 @@
     <a href="<%= case_path(filtered_case) %>">
       <div class="product-item">
         <img src="<%= filtered_case.image %>">
-        <div style="font-size: 14px; margin-top: 5px">
-          <%= filtered_case.name %><br>
+        <div class="product-item--text">
+          <span class="bold"><%= filtered_case.name %><br></span>
           <% if filtered_case.is_available && filtered_case.is_in_sale %>
             <div class="sale-ribbon">
               Sale!
             </div>
           <% elsif !filtered_case.is_available %>
-            <div class="sale-ribbon" style="background-color: red">
+            <div class="not-available-ribbon">
               Hết hàng
             </div>
           <% end %>
-
           <% unless filtered_case.is_in_sale %>
             <%= filtered_case.formatted_price %>
           <% else %>
-            <span style="text-decoration: line-through; color: #5A5A5A;"><%= filtered_case.formatted_price %></span>
+            <span class="old-price"><%= filtered_case.formatted_price %></span>
             <span><%= filtered_case.formatted_sale_price %></span>
           <% end %>
         </div>
