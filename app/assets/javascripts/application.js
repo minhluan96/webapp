@@ -18,12 +18,23 @@
 //= require turbolinks
 //= require_tree .
 
-document.addEventListener("turbolinks:load", function() {
+document.addEventListener("turbolinks:load", function () {
     var dataTable = $('.datatable').DataTable({
-        "pageLength": 25
+        "pageLength": 25,
+        "columnDefs": [
+            {
+                "targets": 2,
+                render: function (data, type, row) {
+                    return data.length > 50 ?
+                        data.substr(0, 50) + '…' :
+                        data;
+                }
+            },
+            {"targets": 3, "width": "50px"},
+            {"targets": 4, "width": "50px"}]
     });
 
-    document.addEventListener("turbolinks:before-cache", function() {
+    document.addEventListener("turbolinks:before-cache", function () {
         dataTable.destroy();
     });
 
@@ -34,8 +45,8 @@ document.addEventListener("turbolinks:load", function() {
     });
 
     $('.products-section--left-arrow').bind('click', function () {
-       owl = $(this).parents('.products-section').find('.owl-carousel');
-       owl.trigger('prev.owl.carousel')
+        owl = $(this).parents('.products-section').find('.owl-carousel');
+        owl.trigger('prev.owl.carousel')
     });
 
     $('.products-section--right-arrow').bind('click', function () {
