@@ -31,11 +31,13 @@ class CasesController < ApplicationController
       ids = CaseCategory.where(category_id: @category_id).pluck :case_id
       result = Case.where(id: ids)
     end
-    p @is_available
-    p @is_sale
     result = result.where(is_available: @is_available) if @is_available
     result = result.where(is_in_sale: @is_sale) if @is_sale
-    result.page(page)
+    unless @order == "price"
+      result.order(@order).page(page)
+    else
+      result.order(is_in_sale: :desc, sale_price: :asc, price: :asc).page(page)
+    end
   end
 
   def build_orders
@@ -51,9 +53,8 @@ class CasesController < ApplicationController
     @is_sale = params[:is_sale] == "true"
     @category_id = params[:category_id].to_i
     @categories = Category.all.order(:name)
-    current_order = params[:order] || 'name'
-    @order = Case.column_names.include?(current_order) ? current_order : 'name'
-    @cases = cases.order(@order)
+    @order = params[:order] || 'name'
+    @cases = cases
     @available_orders = build_orders
   end
 end
