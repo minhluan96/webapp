@@ -23,7 +23,7 @@
 $orange: #F0AE00;
 $radio-fill-color: $orange !default;
 $radio-empty-color: #5a5a5a !default;
-$input-disabled-color: rgba(0,0,0, .42) !default;
+$input-disabled-color: rgba(0, 0, 0, .42) !default;
 $radio-border: 2px solid $radio-fill-color !default;
 $input-background: #fff !default;
 $secondary-color: $orange;
@@ -356,6 +356,44 @@ footer {
     padding-right: 15px;
     margin-bottom: 10px;
 
+    li {
+      display: inline-block;
+      border-radius: 2px;
+      text-align: center;
+      vertical-align: top;
+      height: 30px;
+
+      a {
+        color: #444;
+        display: inline-block;
+        font-size: 13px;
+        padding: 0 10px;
+        line-height: 30px;
+      }
+
+      &.active a {
+        color: #fff;
+      }
+
+      &.active {
+        background-color: $orange;
+      }
+
+      &.disabled a {
+        cursor: default;
+        color: #999;
+      }
+
+      i {
+        font-size: 2rem;
+      }
+    }
+
+    li.pages ul li {
+      display: inline-block;
+      float: none;
+    }
+
     span {
       margin: 0 5px;
     }
@@ -610,8 +648,8 @@ footer {
       transform: scale(1);
       border: 0;
       border-radius: 50%;
-      box-shadow: 0 0 0 10px rgba(0,0,0,.1);
-      background-color: rgba(0,0,0,.1);
+      box-shadow: 0 0 0 10px rgba(0, 0, 0, .1);
+      background-color: rgba(0, 0, 0, .1);
     }
   }
 
@@ -725,7 +763,7 @@ footer {
     &.tabbed:focus + span:not(.lever):after {
       border-radius: 2px;
       border-color: $radio-empty-color;
-      background-color: rgba(0,0,0,.1);
+      background-color: rgba(0, 0, 0, .1);
     }
 
     &.tabbed:checked:focus + span:not(.lever):after {
@@ -838,7 +876,7 @@ footer {
 
   /* Focused styles */
   [type="radio"].tabbed:focus + span:before {
-    box-shadow: 0 0 0 10px rgba(0,0,0,.1);
+    box-shadow: 0 0 0 10px rgba(0, 0, 0, .1);
   }
 
   /* Disabled Radio With gap */
