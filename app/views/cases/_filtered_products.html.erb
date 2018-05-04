@@ -1,4 +1,4 @@
-<div style="min-height: 510px">
+<div id="content">
   <% @cases.each do |filtered_case| %>
     <a href="<%= case_path(filtered_case) %>">
       <div class="product-item">
@@ -28,6 +28,7 @@
 </div>
 <%= paginate @cases, left: 1, right: 3, params: {controller: 'cases', action: 'filter_cases'} %>
 <script>
+    $('#content').css('min-height', $('.filter').height());
     $(".pagination a").click(function (event) {
         event.preventDefault();
         $('.filtered-products').load($(this).attr('href'), function (data) {
