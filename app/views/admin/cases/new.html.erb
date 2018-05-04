@@ -18,7 +18,7 @@
   <div class="input-control">
     <label>Category:</label>
     <div class="input-area">
-      <% Category.all.each do |category| %>
+      <% Category.all.order(:name).each do |category| %>
         <div class="input-control">
           <label><%= category.name %>:</label>
           <input type="text" name="case[category[<%= category.id %>]]">
