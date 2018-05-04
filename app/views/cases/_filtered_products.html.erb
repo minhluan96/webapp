@@ -5,12 +5,19 @@
         <img src="<%= filtered_case.image %>">
         <div style="font-size: 14px; margin-top: 5px">
           <%= filtered_case.name %><br>
-          <% unless filtered_case.is_in_sale %>
-            <%= filtered_case.formatted_price %>
-          <% else %>
+          <% if filtered_case.is_available && filtered_case.is_in_sale %>
             <div class="sale-ribbon">
               Sale!
             </div>
+          <% elsif !filtered_case.is_available %>
+            <div class="sale-ribbon" style="background-color: red">
+              Hết hàng
+            </div>
+          <% end %>
+
+          <% unless filtered_case.is_in_sale %>
+            <%= filtered_case.formatted_price %>
+          <% else %>
             <span style="text-decoration: line-through; color: #5A5A5A;"><%= filtered_case.formatted_price %></span>
             <span><%= filtered_case.formatted_sale_price %></span>
           <% end %>
