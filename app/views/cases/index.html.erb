@@ -66,7 +66,7 @@
     $(".filter a").click(function (event) {
         event.preventDefault();
         reloadFilteredCases(this);
-        $('li').removeClass('active');
+        $('.filter li').removeClass('active');
         $(this).parents('li').addClass('active');
     });
 
