@@ -30,11 +30,12 @@ class Admin::CasesController < ApplicationController
       @case.case_categories.destroy_all
       update_image_and_category
     end
-    redirect_to admin_cases_path
+    redirect_to session[:previous_url] || admin_cases_path
   end
 
   def index
     @cases = Case.includes(:case_categories).all
+    session.delete(:previous_url)
   end
 
   def destroy

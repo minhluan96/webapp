@@ -534,6 +534,25 @@ footer {
       margin-bottom: 3px;
       font-size: 14px;
     }
+
+    &--button {
+      color: white;
+      background-color: $orange;
+      padding: 8px 40px;
+      font-size: 18px;
+      font-weight: bold;
+      display: block;
+      text-align: center;
+      -webkit-transition: background-color 0.4s ease, color 0.4s ease;
+      -moz-transition: background-color 0.4s ease, color 0.4s ease;
+      -o-transition: background-color 0.4s ease, color 0.4s ease;
+      transition: background-color 0.4s ease, color 0.4s ease;
+
+      &:hover {
+        color: black !important;
+        background-color: #e4e4e4;
+      }
+    }
   }
 }
 

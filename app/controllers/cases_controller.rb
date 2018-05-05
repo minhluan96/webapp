@@ -6,6 +6,7 @@ class CasesController < ApplicationController
   def show
     @case = Case.includes([:case_images, :case_categories]).find(params[:id])
     add_breadcrumb @case.name
+    session[:previous_url] = request.fullpath
   end
 
   def index

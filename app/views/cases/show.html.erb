@@ -49,6 +49,11 @@
       </div>
       <p><%= @case.description %></p>
     </div>
+    <% if can?(:manage, :case) %>
+      <div class="product-detail--quantity">
+        <a href="<%= edit_admin_case_path(@case.id) %>" class="product-detail--quantity--button">EDIT</a>
+      </div>
+    <% end %>
   </div>
 </div>
 <script>
