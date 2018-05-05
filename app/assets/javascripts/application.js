@@ -42,7 +42,8 @@ document.addEventListener("turbolinks:load", function () {
         loop: true,
         items: 4,
         slideSpeed: 200,
-        pagination: false
+        pagination: false,
+        dots: false
     });
 
     $('.products-section--left-arrow').bind('click', function () {
