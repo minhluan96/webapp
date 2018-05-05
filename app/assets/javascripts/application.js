@@ -41,7 +41,8 @@ document.addEventListener("turbolinks:load", function () {
     $(".owl-carousel").owlCarousel({
         loop: true,
         items: 4,
-        slideSpeed: 200
+        slideSpeed: 200,
+        pagination: false
     });
 
     $('.products-section--left-arrow').bind('click', function () {
