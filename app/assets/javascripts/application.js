@@ -34,8 +34,6 @@ document.addEventListener("turbolinks:load", function () {
             {"targets": 4, "width": "50px"}]
     });
 
-    $('.materialboxed').materialbox();
-
     document.addEventListener("turbolinks:before-cache", function () {
         dataTable.destroy();
     });
