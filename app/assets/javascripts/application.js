@@ -38,6 +38,8 @@ document.addEventListener("turbolinks:load", function () {
         dataTable.destroy();
     });
 
+    $('.materialboxed').materialbox();
+
     $(".owl-carousel").owlCarousel({
         loop: true,
         items: 4,
