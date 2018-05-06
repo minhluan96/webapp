@@ -34,10 +34,13 @@ class CasesController < ApplicationController
     end
     result = result.where(is_available: @is_available) if @is_available
     result = result.where(is_in_sale: @is_sale) if @is_sale
-    unless @order == "price"
-      result.order(@order).page(page)
-    else
+    case @order
+    when 'price'
       result.order(is_in_sale: :desc, sale_price: :asc, price: :asc).page(page)
+    when 'created_at'
+      result.order(created_at: :desc).page(page)
+    else
+      result.order(:name).page(page)
     end
   end
 
