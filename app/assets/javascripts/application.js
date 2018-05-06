@@ -15,6 +15,7 @@
 //= require bootstrap
 //= require dataTables/jquery.dataTables
 //= require owl.carousel
+//= require materialize
 //= require turbolinks
 //= require_tree .
 
@@ -33,6 +34,8 @@ document.addEventListener("turbolinks:load", function () {
             {"targets": 3, "width": "50px"},
             {"targets": 4, "width": "50px"}]
     });
+
+    $('.materialboxed').materialbox();
 
     document.addEventListener("turbolinks:before-cache", function () {
         dataTable.destroy();
