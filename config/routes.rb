@@ -8,6 +8,12 @@ Rails.application.routes.draw do
     end
   end
 
+  resources 'sharepoint_webhook' do
+    collection do
+      get 'initialize_webhook'
+    end
+  end
+
   namespace :admin do
     resources 'cases' do
       collection do
