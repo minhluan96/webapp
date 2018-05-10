@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   resources 'sharepoint_webhook' do
     collection do
-      get 'initialize_webhook'
+      post 'initialize_webhook'
     end
   end
 
