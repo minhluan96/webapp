@@ -3,7 +3,7 @@ class SharepointWebhookController < ApplicationController
 
   def initialize_webhook
     @token = params[:validationtoken]
-    puts "PARAMS = #{params}"
+    puts "PARAMS = #{params[:value]}"
     render :plain => @token
   end
 end
