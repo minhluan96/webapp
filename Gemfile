@@ -42,7 +42,6 @@ gem 'jquery-datatables-rails', '~> 3.4.0'
 gem 'owlcarousel-rails'
 gem 'materialize-sass', '~> 1.0.0.beta'
 gem 'rest-client'
-gem 'yajl-ruby', require: 'yajl'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
