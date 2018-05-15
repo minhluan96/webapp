@@ -8,6 +8,7 @@ class CatchJsonParseErrors
       @app.call(env)
     rescue ActionDispatch::Http::Parameters::ParseError => error
       p env
+      p request
       error_output = "There was a problem in the JSON you submitted: #{error}"
       p env['HTTP_ACCEPT']
       p "error_output= #{error_output}"
