@@ -7,6 +7,6 @@ class SharepointWebhookController < ApplicationController
     puts "PARAMS= #{request}"
     render :plain => @token
   rescue ActionDispatch::Http::Parameters::ParseError => e
-    puts "PARAMS= #{e}"
+    puts "PARAMS= #{e.raw_post}"
   end
 end
