@@ -2,9 +2,9 @@ class SharepointWebhookController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def initialize_webhook
-    @token = params[:validationToken]
+    @token = params[:validationtoken]
 
-    puts "PARAMS= #{request.parameters[:value]}"
+    puts "PARAMS= #{request}"
     render :plain => @token
   end
 end
