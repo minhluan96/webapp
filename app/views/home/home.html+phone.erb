@@ -62,20 +62,20 @@
     </a>
   </div>
   <div class="owl-carousel">
-    <% @new_cases.each do |new_case| %>
-      <a href="<%= case_path(new_case) %>">
-        <img src="<%= new_case.image %>">
+    <% @top_sales_cases.each do |top_sales_case| %>
+      <a href="<%= case_path(top_sales_case) %>">
+        <img src="<%= top_sales_case.image %>">
         <div>
-          <span class="bold"><%= new_case.name %></span>
+          <span class="bold"><%= top_sales_case.name %></span>
           <br>
-          <% unless new_case.is_in_sale %>
-            <%= new_case.formatted_price %>
+          <% unless top_sales_case.is_in_sale %>
+            <%= top_sales_case.formatted_price %>
           <% else %>
             <div class="ribbon">
               Sale!
             </div>
-            <span class="old-price"><%= new_case.formatted_price %></span>
-            <span><%= new_case.formatted_sale_price %></span>
+            <span class="old-price"><%= top_sales_case.formatted_price %></span>
+            <span><%= top_sales_case.formatted_sale_price %></span>
           <% end %>
         </div>
       </a>
