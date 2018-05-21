@@ -36,6 +36,92 @@ $input-margin-bottom: 8px;
 $input-margin: 0 0 $input-margin-bottom 0 !default;
 $input-font-size: 16px !default;
 
+body.mobile {
+  width: 100%;
+
+  .navbar__top {
+    height: 70px;
+    width: 100%;
+  }
+
+  footer {
+    bottom: 0;
+    color: #eeeeee;
+    background-color: black;
+    padding: 1.5em 1.5em;
+    font-size: 15px;
+    width: 100%;
+    position: initial;
+  }
+
+  .media__content--description {
+    font-weight: normal;
+    position: relative;
+    top: -14px;
+    letter-spacing: 1px;
+    font-size: 14px;
+  }
+
+  .banner {
+    margin-top: 20px;
+
+    &__content {
+      width: initial;
+      top: 0;
+      left: 0;
+      padding-top: 0px;
+
+      &--text {
+        background-color: rgba(255, 255, 255, 0.7);
+        padding-left: 10px;
+        width: 200px;
+        margin-bottom: 7px;
+      }
+    }
+
+    img {
+      max-width: 100%;
+    }
+  }
+
+  .products-section {
+    padding: 0 50px;
+
+    &--left-arrow {
+      left: 20px;
+    }
+
+    &--right-arrow {
+      right: 20px;
+    }
+
+    &__products-list {
+
+      &--product-item {
+        position: relative;
+        margin: 0 30px;
+      }
+    }
+  }
+
+  .owl-carousel .owl-item {
+    img {
+      position: relative;
+
+    }
+
+    .ribbon {
+      position: absolute;
+      background-color: #F0AE00;
+      color: white;
+      display: inline-block;
+      padding: 1px 12px;
+      top: 12px;
+      font-weight: bold;
+    }
+  }
+}
+
 html {
   height: 102%;
 }
@@ -1056,7 +1142,7 @@ footer {
   }
 
   #materialbox-overlay {
-    position:fixed;
+    position: fixed;
     top: 0;
     right: 0;
     bottom: 0;

@@ -41,9 +41,15 @@ document.addEventListener("turbolinks:load", function () {
         dataTable.destroy();
     });
 
+    if (window.isMobile) {
+        numOfItem = 1;
+    } else {
+        numOfItem = 4;
+    }
+
     $(".owl-carousel").owlCarousel({
         loop: true,
-        items: 4,
+        items: numOfItem,
         slideSpeed: 200,
         pagination: false,
         dots: false

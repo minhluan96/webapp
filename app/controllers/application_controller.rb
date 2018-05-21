@@ -23,6 +23,11 @@ class ApplicationController < ActionController::Base
   end
 
   private
+
+  def detect_device_variant
+    request.variant = :phone if browser.device.mobile?
+  end
+
   def render_not_found_page
     render 'error/error_404_page'
   end

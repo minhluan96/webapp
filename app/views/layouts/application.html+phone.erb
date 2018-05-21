@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>PillCase</title>
+  <%= csrf_meta_tags %>
+  <%= favicon_link_tag('logo.png') %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+</head>
+
+<body class="mobile">
+<nav class="navbar navbar-light">
+  <div class="navbar__top">
+    <div class="media">
+      <div class="media__image">
+        <%= image_tag("logo.png") %>
+      </div>
+      <div class="media__content">
+        <div class="media__content--title">
+          Pill<span style="color: rgb(240, 174, 0);">Case</span>
+        </div>
+        <div class="media__content--description">
+          A Perfect Mobile Accessories Store
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="navbar__bottom">
+    <ul>
+      <li class="<%= current_class(root_path) %>"><a href="<%= root_path %>">Home</a></li>
+      <li class="<%= current_class(cases_path) %>"><a href="<%= cases_path %>">Shop</a></li>
+      <% if can?(:manager, :cases) %>
+        <li class="<%= current_class(admin_cases_path) %>"><a href="<%= admin_cases_path %>">Manage Case</a></li>
+      <% end %>
+    </ul>
+    <div class="pull-right">
+      Call Us <%= I18n.t("contact_phone") %>
+    </div>
+  </div>
+</nav>
+<div class="body">
+  <%= yield %>
+</div>
+<footer>
+  <div class="first-col">
+    <div class="first-col--title">
+      Contact Us
+    </div>
+    23 Lương Hữu Khánh , Phường Phạm Ngũ Lão, Quận 1, Lầu L<br>
+    Tel: <%= I18n.t("contact_phone") %>
+    <div class="first-col--social-media">
+      <a href="https://www.facebook.com/pillcase0409/">
+        <%= image_tag("facebook-logo.png") %>
+      </a>
+      <a href="https://www.instagram.com/pill.case/">
+        <%= image_tag("insta-logo.png") %>
+      </a>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
+<script>
+  var isMobile = true;
+</script>
