@@ -32,10 +32,10 @@
   <%= @case.description %>
 </div>
 <div class="navigation">
-<a href="<%= @case.previous ? case_path(@case.previous) : 'javascript:void(0)' %>">
-  <span><i class="material-icons">keyboard_arrow_left</i>Prev</span>
-</a>
-<a href="<%= @case.next ? case_path(@case.next) : 'javascript:void(0)' %>" style="float: right">
-  <span>Next<i class="material-icons">keyboard_arrow_right</i></span>
-</a>
+  <a href="<%= @case.previous ? case_path(@case.previous) : 'javascript:void(0)' %>">
+    <span><i class="material-icons">keyboard_arrow_left</i>Prev</span>
+  </a>
+  <a href="<%= @case.next ? case_path(@case.next) : 'javascript:void(0)' %>" style="float: right">
+    <span>Next<i class="material-icons">keyboard_arrow_right</i></span>
+  </a>
 </div>
