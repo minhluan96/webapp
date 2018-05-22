@@ -2,6 +2,7 @@ class CasesController < ApplicationController
   add_breadcrumb "Home", :root_path
   add_breadcrumb "Shop", :cases_path
   skip_before_action :verify_authenticity_token, only: :filter_cases
+  before_action :detect_device_variant, only: :show
 
   def show
     @case = Case.includes([:case_images, :case_categories]).find(params[:id])

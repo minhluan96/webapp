@@ -1,0 +1,41 @@
+<%= link_to root_path do %>
+  <span style="font-size: 14px; position: relative; left: -6px;"><i class="material-icons inline">keyboard_arrow_left</i>Back to Home</span>
+<% end %>
+<div class="big-title">
+  <%= @case.name %>
+</div>
+<div style="padding-left: 5px; margin-bottom: 10px;">
+  <% unless @case.is_in_sale %>
+    <%= @case.formatted_price %>
+  <% else %>
+    <span class="old-price"><%= @case.formatted_price %></span>
+    <span><%= @case.formatted_sale_price %></span>
+  <% end %>
+</div>
+<div class="owl-carousel owl-theme pagination">
+  <img src="<%= @case.image %>">
+  <% @case.case_images.each do |case_image| %>
+    <img src="<%= case_image.image_url %>">
+  <% end %>
+</div>
+<div class="materialize">
+  <% @case.case_categories.includes(:category).order('categories.name').each do |case_category| %>
+    <div class="chip">
+      <%= case_category.category.name %>
+      <i class="close material-icons">phone_iphone</i>
+    </div>
+  <% end %>
+</div>
+<div class="devider" style="margin-top: 5px; margin-bottom: 1em;"></div>
+<div style="font-size: 15px;">
+  <div style="font-size: 19px;">PRODUCT INFO</div>
+  <%= @case.description %>
+</div>
+<div class="navigation">
+<a href="<%= @case.previous ? case_path(@case.previous) : 'javascript:void(0)' %>">
+  <span><i class="material-icons">keyboard_arrow_left</i>Prev</span>
+</a>
+<a href="<%= @case.next ? case_path(@case.next) : 'javascript:void(0)' %>" style="float: right">
+  <span>Next<i class="material-icons">keyboard_arrow_right</i></span>
+</a>
+</div>

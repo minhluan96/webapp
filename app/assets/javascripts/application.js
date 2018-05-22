@@ -47,12 +47,18 @@ document.addEventListener("turbolinks:load", function () {
         numOfItem = 4;
     }
 
-    $(".owl-carousel").owlCarousel({
+    $(".owl-carousel").not(".pagination").owlCarousel({
         loop: true,
         items: numOfItem,
         slideSpeed: 200,
         pagination: false,
         dots: false
+    });
+
+    $(".owl-carousel.pagination").owlCarousel({
+        items: numOfItem,
+        slideSpeed: 200,
+        dots: true
     });
 
     $('.products-section--left-arrow').bind('click', function () {
