@@ -29,7 +29,7 @@
   <div class="owl-carousel">
     <% @new_cases.each do |new_case| %>
       <a href="<%= case_path(new_case) %>">
-        <img src="<%= new_case.image %>">
+        <img src="<%= new_case.image %>" style="height: 245px;">
         <div>
           <span class="bold"><%= new_case.name %></span>
           <br>
@@ -64,7 +64,7 @@
   <div class="owl-carousel">
     <% @top_sales_cases.each do |top_sales_case| %>
       <a href="<%= case_path(top_sales_case) %>">
-        <img src="<%= top_sales_case.image %>">
+        <img src="<%= top_sales_case.image %>" style="height: 245px;">
         <div>
           <span class="bold"><%= top_sales_case.name %></span>
           <br>
