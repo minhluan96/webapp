@@ -37,10 +37,6 @@ document.addEventListener("turbolinks:load", function () {
 
     $('.materialboxed').materialbox();
 
-    document.addEventListener("turbolinks:before-cache", function () {
-        dataTable.destroy();
-    });
-
     if (window.isMobile) {
         numOfItem = 1;
     } else {
@@ -69,5 +65,10 @@ document.addEventListener("turbolinks:load", function () {
     $('.products-section--right-arrow').bind('click', function () {
         owl = $(this).parents('.products-section').find('.owl-carousel');
         owl.trigger('next.owl.carousel')
+    });
+
+    document.addEventListener("turbolinks:before-cache", function () {
+        dataTable.destroy();
+        $(".owl-carousel").owlCarousel('destroy');
     });
 });
