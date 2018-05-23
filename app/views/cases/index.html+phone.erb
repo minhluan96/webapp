@@ -6,7 +6,7 @@
         <i class="close material-icons">phone_iphone</i>
       </div>
     <% end %>
-    <% Category.all.each do |category| %>
+    <% @categories.each do |category| %>
       <%= link_to cases_path(category_id: category.id) do %>
         <div class="chip">
           <%= category.name %>
