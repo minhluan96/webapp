@@ -51,7 +51,7 @@ body.mobile {
   }
 
   .owl-theme .owl-dots .owl-dot span {
-    border: 1px solid;
+    border: 1px solid #ccc;
     background: white;
   }
 
@@ -64,6 +64,11 @@ body.mobile {
     top: 6.5px;
   }
 
+  .horizontal-menu {
+    overflow: auto;
+    white-space: nowrap;
+  }
+
   .big-title {
     font-size: 33px;
     color: rgb(87, 87, 87);
@@ -73,6 +78,37 @@ body.mobile {
 
   .body {
     padding: 0 15px;
+
+    img {
+      width: 100%;
+    }
+
+    .sale-ribbon {
+      position: absolute;
+      background-color: $orange;
+      color: white;
+      display: inline-block;
+      padding: 2px 10px;
+      top: 10px;
+      font-weight: bold;
+      font-size: 12px;
+    }
+
+    .not-available-ribbon {
+      position: absolute;
+      background-color: red;
+      color: white;
+      display: inline-block;
+      padding: 2px 10px;
+      top: 10px;
+      font-weight: bold;
+      font-size: 12px;
+    }
+
+    .case-item {
+      position: relative;
+      margin-bottom: 20px;
+    }
   }
 
   .navbar {

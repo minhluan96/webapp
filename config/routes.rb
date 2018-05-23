@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources 'cases' do
     collection do
       get 'filter_cases'
+      get 'mobile_filter_cases'
     end
   end
 

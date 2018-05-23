@@ -1,0 +1,43 @@
+<div style="padding: 0 20px;">
+  <div class="materialize horizontal-menu" data-category-id="<%= @category_id %>" id="category-control">
+    <%= link_to cases_path() do %>
+      <div class="chip">
+        All
+        <i class="close material-icons">phone_iphone</i>
+      </div>
+    <% end %>
+    <% Category.all.each do |category| %>
+      <%= link_to cases_path(category_id: category.id) do %>
+        <div class="chip">
+          <%= category.name %>
+          <i class="close material-icons">phone_iphone</i>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <div id="filtered-products">
+    <%= render 'mobile_filtered_products', cases: @cases %>
+  </div>
+  <div class="product-detail--quantity" id="load-more" data-page="1">
+    <a href="javascript:void(0)" class="product-detail--quantity--button">LOAD MORE</a>
+  </div>
+</div>
+<script>
+    $('#load-more').click(function () {
+        page = $(this).data('page') + 1;
+        var url = new URL('<%= j request.base_url %><%= j mobile_filter_cases_cases_path() %>');
+        url.searchParams.set('page', page);
+        url.searchParams.set('category_id', $('#category-control').data('category-id'));
+        $.ajax({
+            url: url,
+            success: function (result) {
+                if (result == '') {
+                    $('#load-more').hide();
+                } else {
+                    $('#filtered-products').append(result);
+                }
+            }
+        });
+        $(this).data('page', page);
+    });
+</script>

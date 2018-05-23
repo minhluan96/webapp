@@ -10,8 +10,6 @@ class Case < ApplicationRecord
 
   include ActiveSupport::NumberHelper
 
-  paginates_per 9
-
   def formatted_price
     number_to_currency(price, unit: "VNĐ", delimiter: ",", format: "%n %u", precision: 0)
   end
