@@ -51,11 +51,13 @@ document.addEventListener("turbolinks:load", function () {
         dots: false
     });
 
-    $(".owl-carousel.pagination").owlCarousel({
+    owl = $(".owl-carousel.pagination").owlCarousel({
         items: numOfItem,
         slideSpeed: 200,
         dots: true
     });
+
+    owl.find('.owl-dots').removeClass('disabled');
 
     $('.products-section--left-arrow').bind('click', function () {
         owl = $(this).parents('.products-section').find('.owl-carousel');
