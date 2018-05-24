@@ -13,15 +13,18 @@ class CasesController < ApplicationController
 
   def index
     session[:mobile_previous_url] = request.fullpath
+    @per_page = browser.device.mobile? ? 5 : 9
     load_cases
   end
 
   def filter_cases
+    @per_page = 9
     load_cases
     render partial: 'filtered_products', locals: {cases: @cases, available_orders: @available_orders, category_id: @category_id}
   end
 
   def mobile_filter_cases
+    @per_page = 5
     load_cases
     render partial: 'mobile_filtered_products', locals: {cases: @cases}
   end
@@ -34,7 +37,6 @@ class CasesController < ApplicationController
   end
 
   def cases
-    @per_page = browser.device.mobile? ? 5 : 9
     if @category_id == 0
       result = Case.all
     else
