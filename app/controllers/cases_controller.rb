@@ -46,15 +46,15 @@ class CasesController < ApplicationController
     result = result.where(is_available: @is_available) if @is_available
     result = result.where(is_in_sale: @is_sale) if @is_sale
     case @order
-    when 'price'
+    when 'name'
+      result.order(:name).page(page).per(@per_page)
+    when 'created_at'
+      result.order(created_at: :desc).page(page).per(@per_page)
+    else
       result.order("CASE
                       WHEN is_in_sale = true then sale_price
                       WHEN is_in_sale = false then price
                     END").page(page).per(@per_page)
-    when 'created_at'
-      result.order(created_at: :desc).page(page).per(@per_page)
-    else
-      result.order(:name).page(page).per(@per_page)
     end
   end
 
@@ -71,7 +71,7 @@ class CasesController < ApplicationController
     @is_sale = params[:is_sale] == "true"
     @category_id = params[:category_id].to_i
     @categories = Category.all.order(:name)
-    @order = params[:order] || 'name'
+    @order = params[:order] || 'price'
     @cases = cases
     @available_orders = build_orders
   end
