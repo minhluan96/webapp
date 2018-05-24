@@ -1,4 +1,5 @@
 <div style="padding: 0 20px;">
+  <input type="hidden" value="1" id="current-page">
   <div class="materialize horizontal-menu" data-category-id="<%= @category_id %>" id="category-control">
     <%= link_to cases_path() do %>
       <div class="chip">
@@ -18,26 +19,44 @@
   <div id="filtered-products">
     <%= render 'mobile_filtered_products', cases: @cases %>
   </div>
-  <div class="product-detail--quantity" id="load-more" data-page="1">
-    <a href="javascript:void(0)" class="product-detail--quantity--button">LOAD MORE</a>
+  <div class="materialize center-text hide" id="preloader">
+    <div class="preloader-wrapper small active">
+      <div class="spinner-layer">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div>
+        <div class="gap-patch">
+          <div class="circle"></div>
+        </div>
+        <div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 <script>
-    $('#load-more').click(function () {
-        page = $(this).data('page') + 1;
-        var url = new URL('<%= j request.base_url %><%= j mobile_filter_cases_cases_path() %>');
-        url.searchParams.set('page', page);
-        url.searchParams.set('category_id', $('#category-control').data('category-id'));
-        $.ajax({
-            url: url,
-            success: function (result) {
-                if (result == '') {
-                    $('#load-more').hide();
-                } else {
+    var canLoadMore = true;
+    $(window).scroll(function () {
+        if ($(window).scrollTop() == $(document).height() - $(window).height() && canLoadMore) {
+            $('#preloader').show();
+            window.canLoadMore = false;
+            page = parseInt($('#current-page').val()) + 1;
+            var url = new URL('<%= j request.base_url %><%= j mobile_filter_cases_cases_path() %>');
+            url.searchParams.set('page', page);
+            url.searchParams.set('category_id', $('#category-control').data('category-id'));
+            $.ajax({
+                url: url,
+                success: function (result) {
                     $('#filtered-products').append(result);
+                    $('#preloader').hide();
+                    window.canLoadMore = true;
+                    if (result == '') {
+                        window.canLoadMore = false;
+                    }
                 }
-            }
-        });
-        $(this).data('page', page);
+            });
+            $('#current-page').val(page);
+        };
     });
 </script>
