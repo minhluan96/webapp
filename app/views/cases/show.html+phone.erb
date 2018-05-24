@@ -1,5 +1,5 @@
-<%= link_to root_path do %>
-  <span style="font-size: 14px; position: relative; left: -6px;"><i class="material-icons inline">keyboard_arrow_left</i>Back to Home</span>
+<%= link_to @back_url do %>
+  <span style="font-size: 14px; position: relative; left: -6px;"><i class="material-icons inline">keyboard_arrow_left</i>Back</span>
 <% end %>
 <div class="big-title">
   <%= @case.name %>
