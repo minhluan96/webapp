@@ -50,7 +50,7 @@ class CasesController < ApplicationController
       result.order("CASE
                       WHEN is_in_sale = true then sale_price
                       WHEN is_in_sale = false then price
-                    END").page(page).per(@per_page)
+                    END, id").page(page).per(@per_page)
     when 'created_at'
       result.order(created_at: :desc).page(page).per(@per_page)
     else
@@ -71,7 +71,7 @@ class CasesController < ApplicationController
     @is_sale = params[:is_sale] == "true"
     @category_id = params[:category_id].to_i
     @categories = Category.all.order(:name)
-    @order = params[:order] || 'name'
+    @order = params[:order] || 'price'
     @cases = cases
     @available_orders = build_orders
   end
