@@ -34,11 +34,14 @@
       </div>
     </div>
   </div>
+  <div class="materialize">
+    <a class="btn-floating btn-large" onclick="$('html, body').animate({ scrollTop: 0 }, 'slow');"><i class="material-icons">arrow_upward</i></a>
+  </div>
 </div>
 <script>
     var canLoadMore = true;
     $(window).scroll(function () {
-        if ($(window).scrollTop() + $(window).height() >= $(document).height() - 120 && canLoadMore) {
+        if ($(window).scrollTop() + $(window).height() >= $(document).height() - 130 && canLoadMore) {
             $('#preloader').show();
             window.canLoadMore = false;
             page = parseInt($('#current-page').val()) + 1;
@@ -57,6 +60,7 @@
                 }
             });
             $('#current-page').val(page);
-        };
+        }
+        ;
     });
 </script>
