@@ -42,10 +42,10 @@ class CasesController < ApplicationController
     @category_id = params[:category_id].to_i
     @per_page = 5
     if @category_id == 0
-      @cases = Case.all.order(created_at: :desc).page(page).per(@per_page)
+      @cases = Case.all.order(is_in_sale: :desc, sale_price: :asc, price: :asc).page(page).per(@per_page)
     else
       ids = CaseCategory.where(category_id: @category_id).pluck :case_id
-      @cases = Case.where(id: ids).order(created_at: :desc).page(page).per(@per_page)
+      @cases = Case.where(id: ids).order(is_in_sale: :desc, sale_price: :asc, price: :asc).page(page).per(@per_page)
     end
   end
 
