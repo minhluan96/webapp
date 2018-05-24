@@ -8,7 +8,7 @@ class CasesController < ApplicationController
     @case = Case.includes([:case_images, :case_categories]).find(params[:id])
     add_breadcrumb @case.name
     session[:previous_url] = request.fullpath
-    @back_url = session[:mobile_previous_url]
+    @back_url = session[:mobile_previous_url] || root_path
   end
 
   def index
