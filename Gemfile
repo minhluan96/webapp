@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby "2.3.7"
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
@@ -42,6 +43,7 @@ gem 'jquery-datatables-rails', '~> 3.4.0'
 gem 'owlcarousel-rails'
 gem 'materialize-sass', '~> 1.0.0.beta'
 gem 'browser'
+gem 'rest-client'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
