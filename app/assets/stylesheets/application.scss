@@ -74,6 +74,32 @@ $button-floating-size: 40px !default;
 $button-floating-large-size: 56px !default;
 $button-floating-radius: 50% !default;
 
+// 6. Collapsible
+// ==========================================================================
+
+$collapsible-height: 3rem !default;
+$collapsible-line-height: $collapsible-height !default;
+$collapsible-header-color: #fff !default;
+$collapsible-border-color: #ddd !default;
+
+// 12. Grid
+// ==========================================================================
+
+$num-cols: 12 !default;
+$gutter-width: 1.5rem !default;
+$element-top-margin: $gutter-width/3 !default;
+$element-bottom-margin: ($gutter-width*2)/3 !default;
+
+// 14. Side Navigation
+// ==========================================================================
+
+$sidenav-font-size: 14px !default;
+$sidenav-font-color: rgba(0, 0, 0, .87) !default;
+$sidenav-bg-color: #fff !default;
+$sidenav-padding: 16px !default;
+$sidenav-item-height: 48px !default;
+$sidenav-line-height: $sidenav-item-height !default;
+
 body.mobile {
   width: 100%;
 
@@ -515,7 +541,7 @@ footer {
         margin-bottom: 5px;
       }
 
-      li.active {
+      li.bold-active {
         font-weight: bold;
         color: black;
       }
@@ -1324,7 +1350,6 @@ footer {
    *      SHRINK_TIME = 400ms
    */
 
-
   .preloader-wrapper {
     display: inline-block;
     position: relative;
@@ -1349,11 +1374,15 @@ footer {
   }
 
   @-webkit-keyframes container-rotate {
-    to { -webkit-transform: rotate(360deg) }
+    to {
+      -webkit-transform: rotate(360deg)
+    }
   }
 
   @keyframes container-rotate {
-    to { transform: rotate(360deg) }
+    to {
+      transform: rotate(360deg)
+    }
   }
 
   .spinner-layer {
@@ -1433,91 +1462,223 @@ footer {
   }
 
   @-webkit-keyframes fill-unfill-rotate {
-    12.5% { -webkit-transform: rotate(135deg);  } /* 0.5 * ARCSIZE */
-    25%   { -webkit-transform: rotate(270deg);  } /* 1   * ARCSIZE */
-    37.5% { -webkit-transform: rotate(405deg);  } /* 1.5 * ARCSIZE */
-    50%   { -webkit-transform: rotate(540deg);  } /* 2   * ARCSIZE */
-    62.5% { -webkit-transform: rotate(675deg);  } /* 2.5 * ARCSIZE */
-    75%   { -webkit-transform: rotate(810deg);  } /* 3   * ARCSIZE */
-    87.5% { -webkit-transform: rotate(945deg);  } /* 3.5 * ARCSIZE */
-    to    { -webkit-transform: rotate(1080deg); } /* 4   * ARCSIZE */
+    12.5% {
+      -webkit-transform: rotate(135deg);
+    }
+    /* 0.5 * ARCSIZE */
+    25% {
+      -webkit-transform: rotate(270deg);
+    }
+    /* 1   * ARCSIZE */
+    37.5% {
+      -webkit-transform: rotate(405deg);
+    }
+    /* 1.5 * ARCSIZE */
+    50% {
+      -webkit-transform: rotate(540deg);
+    }
+    /* 2   * ARCSIZE */
+    62.5% {
+      -webkit-transform: rotate(675deg);
+    }
+    /* 2.5 * ARCSIZE */
+    75% {
+      -webkit-transform: rotate(810deg);
+    }
+    /* 3   * ARCSIZE */
+    87.5% {
+      -webkit-transform: rotate(945deg);
+    }
+    /* 3.5 * ARCSIZE */
+    to {
+      -webkit-transform: rotate(1080deg);
+    }
+    /* 4   * ARCSIZE */
   }
 
   @keyframes fill-unfill-rotate {
-    12.5% { transform: rotate(135deg);  } /* 0.5 * ARCSIZE */
-    25%   { transform: rotate(270deg);  } /* 1   * ARCSIZE */
-    37.5% { transform: rotate(405deg);  } /* 1.5 * ARCSIZE */
-    50%   { transform: rotate(540deg);  } /* 2   * ARCSIZE */
-    62.5% { transform: rotate(675deg);  } /* 2.5 * ARCSIZE */
-    75%   { transform: rotate(810deg);  } /* 3   * ARCSIZE */
-    87.5% { transform: rotate(945deg);  } /* 3.5 * ARCSIZE */
-    to    { transform: rotate(1080deg); } /* 4   * ARCSIZE */
+    12.5% {
+      transform: rotate(135deg);
+    }
+    /* 0.5 * ARCSIZE */
+    25% {
+      transform: rotate(270deg);
+    }
+    /* 1   * ARCSIZE */
+    37.5% {
+      transform: rotate(405deg);
+    }
+    /* 1.5 * ARCSIZE */
+    50% {
+      transform: rotate(540deg);
+    }
+    /* 2   * ARCSIZE */
+    62.5% {
+      transform: rotate(675deg);
+    }
+    /* 2.5 * ARCSIZE */
+    75% {
+      transform: rotate(810deg);
+    }
+    /* 3   * ARCSIZE */
+    87.5% {
+      transform: rotate(945deg);
+    }
+    /* 3.5 * ARCSIZE */
+    to {
+      transform: rotate(1080deg);
+    }
+    /* 4   * ARCSIZE */
   }
 
   @-webkit-keyframes blue-fade-in-out {
-    from { opacity: 1; }
-    25% { opacity: 1; }
-    26% { opacity: 0; }
-    89% { opacity: 0; }
-    90% { opacity: 1; }
-    100% { opacity: 1; }
+    from {
+      opacity: 1;
+    }
+    25% {
+      opacity: 1;
+    }
+    26% {
+      opacity: 0;
+    }
+    89% {
+      opacity: 0;
+    }
+    90% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 1;
+    }
   }
 
   @keyframes blue-fade-in-out {
-    from { opacity: 1; }
-    25% { opacity: 1; }
-    26% { opacity: 0; }
-    89% { opacity: 0; }
-    90% { opacity: 1; }
-    100% { opacity: 1; }
+    from {
+      opacity: 1;
+    }
+    25% {
+      opacity: 1;
+    }
+    26% {
+      opacity: 0;
+    }
+    89% {
+      opacity: 0;
+    }
+    90% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 1;
+    }
   }
 
   @-webkit-keyframes red-fade-in-out {
-    from { opacity: 0; }
-    15% { opacity: 0; }
-    25% { opacity: 1; }
-    50% { opacity: 1; }
-    51% { opacity: 0; }
+    from {
+      opacity: 0;
+    }
+    15% {
+      opacity: 0;
+    }
+    25% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 1;
+    }
+    51% {
+      opacity: 0;
+    }
   }
 
   @keyframes red-fade-in-out {
-    from { opacity: 0; }
-    15% { opacity: 0; }
-    25% { opacity: 1; }
-    50% { opacity: 1; }
-    51% { opacity: 0; }
+    from {
+      opacity: 0;
+    }
+    15% {
+      opacity: 0;
+    }
+    25% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 1;
+    }
+    51% {
+      opacity: 0;
+    }
   }
 
   @-webkit-keyframes yellow-fade-in-out {
-    from { opacity: 0; }
-    40% { opacity: 0; }
-    50% { opacity: 1; }
-    75% { opacity: 1; }
-    76% { opacity: 0; }
+    from {
+      opacity: 0;
+    }
+    40% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+    75% {
+      opacity: 1;
+    }
+    76% {
+      opacity: 0;
+    }
   }
 
   @keyframes yellow-fade-in-out {
-    from { opacity: 0; }
-    40% { opacity: 0; }
-    50% { opacity: 1; }
-    75% { opacity: 1; }
-    76% { opacity: 0; }
+    from {
+      opacity: 0;
+    }
+    40% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+    75% {
+      opacity: 1;
+    }
+    76% {
+      opacity: 0;
+    }
   }
 
   @-webkit-keyframes green-fade-in-out {
-    from { opacity: 0; }
-    65% { opacity: 0; }
-    75% { opacity: 1; }
-    90% { opacity: 1; }
-    100% { opacity: 0; }
+    from {
+      opacity: 0;
+    }
+    65% {
+      opacity: 0;
+    }
+    75% {
+      opacity: 1;
+    }
+    90% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
   }
 
   @keyframes green-fade-in-out {
-    from { opacity: 0; }
-    65% { opacity: 0; }
-    75% { opacity: 1; }
-    90% { opacity: 1; }
-    100% { opacity: 0; }
+    from {
+      opacity: 0;
+    }
+    65% {
+      opacity: 0;
+    }
+    75% {
+      opacity: 1;
+    }
+    90% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
   }
 
   /**
@@ -1590,27 +1751,51 @@ footer {
   }
 
   @-webkit-keyframes left-spin {
-    from { -webkit-transform: rotate(130deg); }
-    50% { -webkit-transform: rotate(-5deg); }
-    to { -webkit-transform: rotate(130deg); }
+    from {
+      -webkit-transform: rotate(130deg);
+    }
+    50% {
+      -webkit-transform: rotate(-5deg);
+    }
+    to {
+      -webkit-transform: rotate(130deg);
+    }
   }
 
   @keyframes left-spin {
-    from { transform: rotate(130deg); }
-    50% { transform: rotate(-5deg); }
-    to { transform: rotate(130deg); }
+    from {
+      transform: rotate(130deg);
+    }
+    50% {
+      transform: rotate(-5deg);
+    }
+    to {
+      transform: rotate(130deg);
+    }
   }
 
   @-webkit-keyframes right-spin {
-    from { -webkit-transform: rotate(-130deg); }
-    50% { -webkit-transform: rotate(5deg); }
-    to { -webkit-transform: rotate(-130deg); }
+    from {
+      -webkit-transform: rotate(-130deg);
+    }
+    50% {
+      -webkit-transform: rotate(5deg);
+    }
+    to {
+      -webkit-transform: rotate(-130deg);
+    }
   }
 
   @keyframes right-spin {
-    from { transform: rotate(-130deg); }
-    50% { transform: rotate(5deg); }
-    to { transform: rotate(-130deg); }
+    from {
+      transform: rotate(-130deg);
+    }
+    50% {
+      transform: rotate(5deg);
+    }
+    to {
+      transform: rotate(-130deg);
+    }
   }
 
   #spinnerContainer.cooldown {
@@ -1620,13 +1805,21 @@ footer {
   }
 
   @-webkit-keyframes fade-out {
-    from { opacity: 1; }
-    to { opacity: 0; }
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
   }
 
   @keyframes fade-out {
-    from { opacity: 1; }
-    to { opacity: 0; }
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
   }
 
   // shared styles
@@ -1874,7 +2067,7 @@ footer {
     }
 
     &:focus {
-      background-color: rgba(0,0,0,.1);
+      background-color: rgba(0, 0, 0, .1);
     }
 
     &.disabled {
@@ -1899,6 +2092,91 @@ footer {
   .btn-block {
     display: block;
   }
+
+  .collapsible {
+    margin: $element-top-margin 0 $element-bottom-margin 0;
+  }
+
+  .collapsible-header {
+    display: flex;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    line-height: 1.5;
+    background-color: $collapsible-header-color;
+    margin-top: 15px;
+    font-weight: bold;
+
+    i {
+      width: 2rem;
+      font-size: 1.6rem;
+      display: inline-block;
+      text-align: center;
+    }
+  }
+
+  .collapsible-body {
+    display: none;
+    box-sizing: border-box;
+  }
+
+  // Sidenav collapsible styling
+  .sidenav,
+  .sidenav.fixed {
+
+    .collapsible {
+      border: none;
+      box-shadow: none;
+
+      li {
+        padding: 0;
+      }
+    }
+
+    .collapsible-header {
+      background-color: transparent;
+      border: none;
+      line-height: inherit;
+      height: inherit;
+      padding: 0 $sidenav-padding;
+      justify-content: space-between;
+
+      &:hover {
+        background-color: rgba(0, 0, 0, .05);
+      }
+      i {
+        line-height: inherit;
+      }
+    }
+
+    .collapsible-body {
+      border: 0;
+      background-color: $collapsible-header-color;
+
+      li a {
+        padding: 0 (7.5px + $sidenav-padding) 0 (15px + $sidenav-padding);
+      }
+    }
+
+  }
+
+  // Popout Collapsible
+
+  .collapsible.popout {
+    border: none;
+    box-shadow: none;
+    > li {
+      box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+      // transform: scaleX(.92);
+      margin: 0 24px;
+      transition: margin .35s cubic-bezier(0.250, 0.460, 0.450, 0.940);
+    }
+    > li.active {
+      box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
+      margin: 16px 0;
+      // transform: scaleX(1);
+    }
+  }
+
 }
 
 .bold {
@@ -1929,6 +2207,7 @@ footer {
 .z-depth-1 {
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
 }
+
 .z-depth-1-half {
   box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.14), 0 1px 7px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -1px rgba(0, 0, 0, 0.2);
 }

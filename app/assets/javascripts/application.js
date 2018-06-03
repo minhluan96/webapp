@@ -73,4 +73,6 @@ document.addEventListener("turbolinks:load", function () {
         dataTable.destroy();
         $(".owl-carousel").owlCarousel('destroy');
     });
+
+    $('.collapsible').collapsible();
 });

@@ -38,7 +38,11 @@ class CasesController < ApplicationController
 
   def cases
     if @category_id == 0
-      result = Case.all
+      ids = CaseCategory.where(category_id: Category.case.pluck(:id)).pluck :case_id
+      result = Case.where(id: ids)
+    elsif @category_id == -1
+      ids = CaseCategory.where(category_id: Category.tempered_glass.pluck(:id)).pluck :case_id
+      result = Case.where(id: ids)
     else
       ids = CaseCategory.where(category_id: @category_id).pluck :case_id
       result = Case.where(id: ids)
@@ -70,7 +74,8 @@ class CasesController < ApplicationController
     @is_available = params[:is_available] == "true"
     @is_sale = params[:is_sale] == "true"
     @category_id = params[:category_id].to_i
-    @categories = Category.all.order(:name)
+    @categories = Category.case.order(:name)
+    @tempered_glass_categories = Category.tempered_glass.order(:name)
     @order = params[:order] || 'price'
     @cases = cases
     @available_orders = build_orders

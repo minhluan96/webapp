@@ -21,7 +21,16 @@
   <div class="input-control">
     <label>Category:</label>
     <div class="input-area">
-      <% Category.order(:name).all.each do |category| %>
+      Ốp Lưng
+      <% Category.case.order(:name).each do |category| %>
+        <div class="input-control">
+          <label><%= category.name %>:</label>
+          <input type="text" name="case[category[<%= category.id %>]]" value="<%= @case.case_categories.where(category_id: category.id).first.try(:quantity) %>">
+        </div>
+      <% end %>
+      <div class="devider"></div>
+      Cường Lực
+      <% Category.tempered_glass.order(:name).each do |category| %>
         <div class="input-control">
           <label><%= category.name %>:</label>
           <input type="text" name="case[category[<%= category.id %>]]" value="<%= @case.case_categories.where(category_id: category.id).first.try(:quantity) %>">

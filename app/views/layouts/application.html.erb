@@ -37,7 +37,7 @@
       <li class="<%= current_class(root_path) %>"><a href="<%= root_path %>">Home</a></li>
       <li class="<%= current_class(cases_path) %>"><a href="<%= cases_path %>">Shop</a></li>
       <% if can?(:manager, :cases) %>
-        <li class="<%= current_class(admin_cases_path) %>"><a href="<%= admin_cases_path %>">Manage Case</a></li>
+        <li class="<%= current_class(admin_cases_path) %>"><a href="<%= admin_cases_path %>">Quản Lý</a></li>
       <% end %>
     </ul>
     <div class="pull-right">

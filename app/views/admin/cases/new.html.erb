@@ -18,7 +18,16 @@
   <div class="input-control">
     <label>Category:</label>
     <div class="input-area">
-      <% Category.all.order(:name).each do |category| %>
+      Ốp Lưng
+      <% Category.case.order(:name).each do |category| %>
+        <div class="input-control">
+          <label><%= category.name %>:</label>
+          <input type="text" name="case[category[<%= category.id %>]]">
+        </div>
+      <% end %>
+      <div class="devider"></div>
+      Cường Lực
+      <% Category.tempered_glass.order(:name).each do |category| %>
         <div class="input-control">
           <label><%= category.name %>:</label>
           <input type="text" name="case[category[<%= category.id %>]]">
