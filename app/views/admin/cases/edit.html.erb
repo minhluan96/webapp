@@ -47,6 +47,7 @@
     <%= f.text_field :sale_price %>
   </div>
   <%= f.submit "Update" %>
+  <%= link_to "Delete", admin_case_path(@case), method: :delete, data: {confirm: 'Do you want to delete?'} %>
 <% end %>
 <script>
     $('input[name="image[]"]').focusout(function () {
