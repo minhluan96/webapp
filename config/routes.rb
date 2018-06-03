@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   root 'home#home'
   resources 'cases' do
     collection do
+      get 'tempered_glass'
       get 'filter_cases'
       get 'mobile_filter_cases'
     end

@@ -1,14 +1,14 @@
 <div style="padding: 0 20px;">
   <input type="hidden" value="1" id="current-page">
   <div class="materialize horizontal-menu" data-category-id="<%= @category_id %>" id="category-control">
-    <%= link_to cases_path() do %>
-      <div class="chip <%= (@category_id == 0 or @category_id == -1) ? 'active' : '' %>" >
+    <%= link_to tempered_glass_cases_path(category_id: -1) do %>
+      <div class="chip <%= (@category_id == 0 or @category_id == -1) ? 'active' : '' %>">
         All
         <i class="close material-icons">phone_iphone</i>
       </div>
     <% end %>
-    <% @categories.each do |category| %>
-      <%= link_to cases_path(category_id: category.id) do %>
+    <% @tempered_glass_categories.each do |category| %>
+      <%= link_to tempered_glass_cases_path(category_id: category.id) do %>
         <div class="chip <%= @category_id == category.id ? 'active' : '' %>">
           <%= category.name %>
           <i class="close material-icons">phone_iphone</i>
