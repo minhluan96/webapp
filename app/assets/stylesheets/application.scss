@@ -521,6 +521,8 @@ footer {
   padding: 30px 18px;
   display: inline-block;
   vertical-align: top;
+  -moz-user-select:none;
+  -webkit-user-select:none;
 
   &__title {
     font-weight: 400;
