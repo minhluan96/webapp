@@ -75,4 +75,5 @@ document.addEventListener("turbolinks:load", function () {
     });
 
     $('.collapsible').collapsible();
+    $('.collapsible-header').attr('tabindex', '');
 });
