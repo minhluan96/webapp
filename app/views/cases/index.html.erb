@@ -28,8 +28,6 @@
           </ul>
         </div>
       </li>
-    </ul>
-    <ul class="collapsible" data-collapsible="accordion">
       <li>
         <div class="collapsible-header">Cường Lực
           <div style="margin-left: auto;"><i class="material-icons">keyboard_arrow_down</i></div>
@@ -114,13 +112,4 @@
             $(this).html(data);
         });
     };
-
-    $('.collapsible-header').click(function () {
-        icon = $(this).find('.material-icons');
-        if(icon.text() == 'keyboard_arrow_down') {
-            icon.html('keyboard_arrow_up');
-        } else {
-            icon.html('keyboard_arrow_down');
-        }
-    });
 </script>

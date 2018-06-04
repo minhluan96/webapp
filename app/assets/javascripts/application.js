@@ -74,6 +74,13 @@ document.addEventListener("turbolinks:load", function () {
         $(".owl-carousel").owlCarousel('destroy');
     });
 
-    $('.collapsible').collapsible();
+    $('.collapsible').collapsible({
+        onOpenStart: function (el) {
+            $(el).find('.material-icons').text('keyboard_arrow_up')
+        },
+        onCloseStart: function (el) {
+            $(el).find('.material-icons').text('keyboard_arrow_down')
+        }
+    });
     $('.collapsible-header').attr('tabindex', '');
 });
