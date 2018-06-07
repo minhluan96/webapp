@@ -26,7 +26,7 @@ class CasesController < ApplicationController
   def filter_cases
     @per_page = 9
     load_cases
-    render partial: 'filtered_products', locals: {cases: @cases, available_orders: @available_orders, category_id: @category_id}
+    render partial: 'filtered_products', locals: {cases: @cases }
   end
 
   def mobile_filter_cases
