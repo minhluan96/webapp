@@ -82,7 +82,7 @@ class CasesController < ApplicationController
     @category_id = params[:category_id].to_i
     @categories = Category.case.order(:name)
     @tempered_glass_categories = Category.tempered_glass.order(:name)
-    @order = params[:order] || 'price'
+    @order = params[:order] || 'created_at'
     @cases = cases
     @available_orders = build_orders
   end
