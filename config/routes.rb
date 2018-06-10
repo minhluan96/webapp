@@ -17,5 +17,6 @@ Rails.application.routes.draw do
         post 'toggle_is_available'
       end
     end
+    resources 'orders'
   end
 end

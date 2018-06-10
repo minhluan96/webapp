@@ -2,7 +2,7 @@
 <table class="display datatable">
   <thead>
   <tr>
-    <th>Name</th>
+    <th></th>
     <th>Price</th>
     <th>Category</th>
     <th>Top Sales</th>
@@ -13,7 +13,7 @@
   <tbody>
   <% @cases.each do |available_case| %>
     <tr>
-      <td><%= available_case.name %></td>
+      <td><img src="<%= available_case.image %>" width="100px"></td>
       <td><%= available_case.formatted_price %></td>
       <td><%= available_case.case_categories.includes(:category).map(&:category).map(&:name).join(', ') %></td>
       <th>
