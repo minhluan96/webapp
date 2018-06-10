@@ -3,8 +3,8 @@
   <thead>
   <tr>
     <th></th>
+    <th>Name</th>
     <th>Price</th>
-    <th>Category</th>
     <th>Top Sales</th>
     <td>Available</td>
     <th></th>
@@ -14,8 +14,8 @@
   <% @cases.each do |available_case| %>
     <tr>
       <td><img src="<%= available_case.image %>" width="100px"></td>
+      <td><%= available_case.name %></td>
       <td><%= available_case.formatted_price %></td>
-      <td><%= available_case.case_categories.includes(:category).map(&:category).map(&:name).join(', ') %></td>
       <th>
         <input type="checkbox" data-case-id="<%= available_case.id %>" <%= available_case.is_top_sales ? 'checked' : '' %> class="is_top_sales">
       </th>

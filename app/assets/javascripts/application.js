@@ -21,18 +21,8 @@
 
 document.addEventListener("turbolinks:load", function () {
     var dataTable = $('.datatable').DataTable({
-        "pageLength": 25,
-        "columnDefs": [
-            {
-                "targets": 2,
-                render: function (data, type, row) {
-                    return data.length > 50 ?
-                        data.substr(0, 50) + '…' :
-                        data;
-                }
-            },
-            {"targets": 3, "width": "50px"},
-            {"targets": 4, "width": "50px"}]
+        "pageLength": 50,
+        "columnDefs": [{"targets": 1, "width": "100px"}]
     });
 
     $('.materialboxed').materialbox();

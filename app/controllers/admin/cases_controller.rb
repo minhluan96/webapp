@@ -30,7 +30,7 @@ class Admin::CasesController < ApplicationController
   end
 
   def index
-    @cases = Case.includes(:case_categories).all
+    @cases = Case.all
     session.delete(:previous_url)
   end
 
