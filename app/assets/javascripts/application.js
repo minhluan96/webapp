@@ -23,7 +23,7 @@ document.addEventListener("turbolinks:load", function () {
     var dataTable = $('.datatable').DataTable({
         "pageLength": 50,
         "autoWidth": false,
-        "columnDefs": [{"targets": 0, "width": "100px"}]
+        "columnDefs": [{"targets": 0, "width": "80px"}]
     });
 
     $('.materialboxed').materialbox();
