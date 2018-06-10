@@ -5,10 +5,6 @@ class Admin::CasesController < ApplicationController
     @case = Case.new
   end
 
-  def show
-
-  end
-
   def create
     ActiveRecord::Base.transaction do
       @case = Case.new
@@ -54,6 +50,7 @@ class Admin::CasesController < ApplicationController
   end
 
   private
+
   def case_params
     params[:case]
   end
@@ -72,6 +69,7 @@ class Admin::CasesController < ApplicationController
     @case.description = case_params[:description]
     @case.is_in_sale = case_params[:is_in_sale] == 'on'
     @case.sale_price = case_params[:sale_price]
+    @case.capital = case_params[:capital]
     @case.image = image_urls.shift
     @case.save!
   end

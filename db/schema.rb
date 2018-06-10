@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180603031845) do
+ActiveRecord::Schema.define(version: 20180610011834) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(version: 20180603031845) do
     t.boolean "is_top_sales", default: false
     t.boolean "is_in_sale", default: false
     t.integer "sale_price"
+    t.integer "capital"
     t.index ["category_id"], name: "index_cases_on_category_id"
   end
 
@@ -64,6 +65,23 @@ ActiveRecord::Schema.define(version: 20180603031845) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "is_tempered_glass", default: false
+  end
+
+  create_table "order_details", force: :cascade do |t|
+    t.bigint "order_details_id"
+    t.bigint "cases_id"
+    t.integer "price"
+    t.integer "capical"
+    t.integer "quantity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cases_id"], name: "index_order_details_on_cases_id"
+    t.index ["order_details_id"], name: "index_order_details_on_order_details_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "roles", force: :cascade do |t|
