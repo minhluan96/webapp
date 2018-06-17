@@ -83,33 +83,28 @@
 <div class="filtered-products">
   <%= render 'filtered_products', locals: {cases: @cases, available_orders: @available_orders, category_id: @category_id} %>
 </div>
-<script>
-    $("input[type='checkbox']").change(function () {
-        $(this).data('value', $(this).is(':checked'))
-        reloadFilteredCases(this);
-    });
+<%= coffee_script_tag do %>
+  $("input[type='checkbox']").change ->
+    $(@).data 'value', $(@).is ':checked'
+    reloadFilteredCases(@)
 
-    $("input[type='radio']").change(function () {
-        reloadFilteredCases(this);
-    });
+  $("input[type='radio']").change ->
+    reloadFilteredCases(@)
 
-    $(".filter a").click(function (event) {
-        event.preventDefault();
-        reloadFilteredCases(this);
-        $('.filter li').removeClass('bold-active');
-        $(this).parent('li').addClass('bold-active');
-    });
+  $(".filter a").click (event) ->
+    event.preventDefault()
+    reloadFilteredCases(@)
+    $('.filter li').removeClass('bold-active')
+    $(@).parent('li').addClass('bold-active')
 
-    function reloadFilteredCases(element) {
-        url_container = $('input[name="filter_url"]')
-        url_string = url_container.val();
-        var filter_name = $(element).data('name');
-        var filter_value = $(element).data('value');
-        var url = new URL(url_string);
-        url.searchParams.set(filter_name, filter_value);
-        url_container.val(url.href);
-        $('.filtered-products').load(url.href, function (data) {
-            $(this).html(data);
-        });
-    };
-</script>
+  reloadFilteredCases = (element) ->
+    url_container = $('input[name="filter_url"]')
+    url_string = url_container.val()
+    filter_name = $(element).data('name')
+    filter_value = $(element).data('value')
+    url = new URL(url_string)
+    url.searchParams.set(filter_name, filter_value)
+    url_container.val(url.href)
+    $('.filtered-products').load url.href, (data) ->
+      $(@).html(data)
+<% end %>

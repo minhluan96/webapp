@@ -56,11 +56,10 @@
     <% end %>
   </div>
 </div>
-<script>
-    $('.thumbnail').click(function () {
-        image = $(this).attr('src');
-        $('.thumbnail').removeClass('active');
-        $(this).addClass('active');
-        $('#big-image').attr('src', image);
-    });
-</script>
+<%= coffee_script_tag do %>
+  $('.thumbnail').click ->
+    image = $(@).attr('src')
+    $('.thumbnail').removeClass('active')
+    $(@).addClass('active')
+    $('#big-image').attr('src', image)
+<% end %>
