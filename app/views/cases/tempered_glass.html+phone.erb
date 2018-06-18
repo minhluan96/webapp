@@ -39,28 +39,5 @@
   </div>
 </div>
 <script>
-    var canLoadMore = true;
-    $(window).scroll(function () {
-        if ($(window).scrollTop() + $(window).height() >= $(document).height() - 130 && canLoadMore) {
-            $('#preloader').show();
-            window.canLoadMore = false;
-            page = parseInt($('#current-page').val()) + 1;
-            var url = new URL('<%= j request.base_url %><%= j mobile_filter_cases_cases_path() %>');
-            url.searchParams.set('page', page);
-            url.searchParams.set('category_id', $('#category-control').data('category-id'));
-            $.ajax({
-                url: url,
-                success: function (result) {
-                    $('#filtered-products').append(result);
-                    $('#preloader').hide();
-                    window.canLoadMore = true;
-                    if (result == '') {
-                        window.canLoadMore = false;
-                    }
-                }
-            });
-            $('#current-page').val(page);
-        }
-        ;
-    });
+    new window.ScrollToLoadView('<%= j request.base_url %><%= j mobile_filter_cases_cases_path() %>')
 </script>
