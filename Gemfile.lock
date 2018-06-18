@@ -70,6 +70,9 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.12.2)
+    coffeebeans (1.0.1)
+      actionpack (>= 3.0.0)
+      coffee-script
     concurrent-ruby (1.0.5)
     crass (1.0.4)
     devise (4.4.3)
@@ -231,6 +234,7 @@ DEPENDENCIES
   cancan
   capybara (~> 2.13)
   coffee-rails (~> 4.2)
+  coffeebeans
   devise
   jbuilder (~> 2.5)
   jquery-datatables-rails (~> 3.4.0)
