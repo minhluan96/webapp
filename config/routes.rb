@@ -7,7 +7,6 @@ Rails.application.routes.draw do
       get 'tempered_glass'
       get 'filter_cases'
       get 'mobile_filter_cases'
-      get 'google_map'
     end
   end
 
