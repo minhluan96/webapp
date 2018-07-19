@@ -4,6 +4,10 @@ class CasesController < ApplicationController
   skip_before_action :verify_authenticity_token, only: :filter_cases
   before_action :detect_device_variant, only: [:show, :index, :tempered_glass]
 
+  def google_map
+
+  end
+
   def tempered_glass
     session[:mobile_previous_url] = request.fullpath
     @per_page = browser.device.mobile? ? 5 : 9
