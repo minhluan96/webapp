@@ -31,6 +31,9 @@
       <li class="<%= current_class(root_path) %>"><a href="<%= root_path %>">Home</a></li>
       <li class="<%= current_class(cases_path) %>"><a href="<%= cases_path %>">Ốp Lưng</a></li>
       <li class="<%= current_class(tempered_glass_cases_path) %>"><a href="<%= tempered_glass_cases_path(category_id: -1) %>">Cường Lực</a></li>
+      <% if can?(:manager, :orders) %>
+        <li class="<%= current_class(admin_orders_path) %>"><a href="<%= admin_orders_path %>">Đặt Hàng</a></li>
+      <% end %>
     </ul>
   </div>
 </nav>

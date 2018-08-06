@@ -49,6 +49,8 @@ GEM
       autoprefixer-rails (>= 6.0.3)
       popper_js (>= 1.12.9, < 2)
       sass (>= 3.5.2)
+    bootstrap-datepicker-rails (1.8.0.1)
+      railties (>= 3.0)
     breadcrumbs_on_rails (3.0.1)
     browser (2.5.3)
     builder (3.2.3)
@@ -61,6 +63,7 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (>= 2.0, < 4.0)
+    chartkick (2.3.5)
     childprocess (0.9.0)
       ffi (~> 1.0, >= 1.0.11)
     coffee-rails (4.2.2)
@@ -86,6 +89,8 @@ GEM
     ffi (1.9.24)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
+    groupdate (4.0.1)
+      activesupport (>= 4.2)
     i18n (1.0.1)
       concurrent-ruby (~> 1.0)
     jbuilder (2.7.0)
@@ -228,14 +233,17 @@ PLATFORMS
 
 DEPENDENCIES
   bootstrap (~> 4.1.0)
+  bootstrap-datepicker-rails
   breadcrumbs_on_rails
   browser
   byebug
   cancan
   capybara (~> 2.13)
+  chartkick
   coffee-rails (~> 4.2)
   coffeebeans
   devise
+  groupdate
   jbuilder (~> 2.5)
   jquery-datatables-rails (~> 3.4.0)
   jquery-rails

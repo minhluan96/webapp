@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180610011834) do
+ActiveRecord::Schema.define(version: 20180806125716) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -67,16 +67,19 @@ ActiveRecord::Schema.define(version: 20180610011834) do
     t.boolean "is_tempered_glass", default: false
   end
 
+  create_table "latest", id: false, force: :cascade do |t|
+    t.text "c1"
+  end
+
   create_table "order_details", force: :cascade do |t|
-    t.bigint "order_details_id"
-    t.bigint "cases_id"
     t.integer "price"
-    t.integer "capical"
+    t.integer "cogs"
     t.integer "quantity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["cases_id"], name: "index_order_details_on_cases_id"
-    t.index ["order_details_id"], name: "index_order_details_on_order_details_id"
+    t.bigint "case_categories_id"
+    t.integer "revenue"
+    t.index ["case_categories_id"], name: "index_order_details_on_case_categories_id"
   end
 
   create_table "orders", force: :cascade do |t|

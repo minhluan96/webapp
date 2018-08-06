@@ -13,6 +13,7 @@
  *= require owl.carousel
  *= require owl.theme.default
  *= require owl.theme
+ *= require bootstrap-datepicker
  *= require_tree .
  *= require_self
  */
@@ -36,6 +37,8 @@ $chip-border-color: #9e9e9e !default;
 $input-margin-bottom: 8px;
 $input-margin: 0 0 $input-margin-bottom 0 !default;
 $input-font-size: 16px !default;
+$medium-screen: 992px !default;
+$medium-and-down: "only screen and (max-width : #{$medium-screen})" !default;
 
 // 3. Buttons
 // ==========================================================================
@@ -131,6 +134,34 @@ body.mobile {
     overflow: auto;
     white-space: nowrap;
     margin-bottom: 10px;
+
+    .case-item {
+      width: 50%;
+      display: inline-block;
+      margin: 0 5px;
+
+      img {
+        width: 192px;
+        height: 192px;
+        border: 1px solid #ccc;
+      }
+
+      .bold {
+        font-size: 12px;
+      }
+
+      .control {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+
+        img {
+          width: 20px;
+          height: 20px;
+          border: none;
+        }
+      }
+    }
   }
 
   .big-title {
@@ -2179,6 +2210,122 @@ footer {
     }
   }
 
+  .modal {
+    &:focus {
+      outline: none;
+    }
+
+    @extend .z-depth-5;
+
+    display: none;
+    position: fixed;
+    left: 0;
+    right: 0;
+    background-color: #fafafa;
+    padding: 0;
+    max-height: 70%;
+    width: 55%;
+    margin: auto;
+    overflow-y: auto;
+
+    border-radius: 2px;
+    will-change: top, opacity;
+
+    @media #{$medium-and-down} {
+      width: 80%;
+    }
+
+    h1,h2,h3,h4 {
+      margin-top: 0;
+    }
+
+    .modal-content {
+      padding: 24px;
+      font-size: 14px;
+
+      [type="radio"] + span:before,
+      [type="radio"] + span:after {
+        left: 5px;
+      }
+
+      input {
+        border: 1px solid #ccc;
+        width: 200px;
+      }
+
+      p {
+        margin-bottom: 0;
+      }
+
+      .horizontal-menu {
+        margin-bottom: 0;
+      }
+    }
+
+    .modal-close {
+      cursor: pointer;
+    }
+
+    .modal-footer {
+      border-radius: 0 0 2px 2px;
+      background-color: #fafafa;
+      padding: 4px 6px;
+      height: 56px;
+      width: 100%;
+      text-align: right;
+
+      .btn, .btn-flat {
+        margin: 6px 0;
+      }
+    }
+  }
+  .modal-overlay {
+    position: fixed;
+    z-index: 999;
+    top: -25%;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    height: 125%;
+    width: 100%;
+    background: #000;
+    display: none;
+
+    will-change: opacity;
+  }
+
+  // Modal with fixed action footer
+  .modal.modal-fixed-footer {
+    padding: 0;
+    height: 70%;
+
+    .modal-content {
+      position: absolute;
+      height: calc(100% - 56px);
+      max-height: 100%;
+      width: 100%;
+      overflow-y: auto;
+    }
+
+    .modal-footer {
+      border-top: 1px solid rgba(0,0,0,.1);
+      position: absolute;
+      bottom: 0;
+    }
+  }
+
+  // Modal Bottom Sheet Style
+  .modal.bottom-sheet {
+    top: auto;
+    bottom: -100%;
+    margin: 0;
+    width: 100%;
+    max-height: 45%;
+    border-radius: 0;
+    will-change: bottom, opacity;
+  }
+
+
 }
 
 .bold {
@@ -2208,6 +2355,12 @@ footer {
 
 .z-depth-1 {
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+}
+
+.z-depth-5 {
+  box-shadow: 0 24px 38px 3px rgba(0,0,0,0.14),
+  0 9px 46px 8px rgba(0,0,0,0.12),
+  0 11px 15px -7px rgba(0,0,0,0.2);
 }
 
 .z-depth-1-half {

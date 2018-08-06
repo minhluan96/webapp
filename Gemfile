@@ -44,6 +44,9 @@ gem 'owlcarousel-rails'
 gem 'materialize-sass', '~> 1.0.0.beta'
 gem 'browser'
 gem 'coffeebeans'
+gem "chartkick"
+gem 'groupdate'
+gem 'bootstrap-datepicker-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

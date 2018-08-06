@@ -1,13 +1,9 @@
 class Admin::OrdersController < ApplicationController
   before_action :authenticate_user!, :authorize_admin
+  before_action :detect_device_variant
 
   def index
-    @orders = Order.includes(:order_details).order(id: :desc).page(page)
-  end
-
-  private
-
-  def page
-    params[:page] || 1
+    @order_details = OrderDetail.from_this_month.group_by_day(:created_at)
+    @cases = Case.all
   end
 end

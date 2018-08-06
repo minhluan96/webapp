@@ -16,6 +16,9 @@
 //= require dataTables/jquery.dataTables
 //= require owl.carousel
 //= require materialize
+//= require Chart.bundle
+//= require chartkick
+//= require bootstrap-datepicker
 //= require turbolinks
 //= require_tree .
 
@@ -74,4 +77,6 @@ document.addEventListener("turbolinks:load", function () {
         }
     });
     $('.collapsible-header').attr('tabindex', '');
+    $('.modal').modal();
+    $('.datepicker').datepicker();
 });
