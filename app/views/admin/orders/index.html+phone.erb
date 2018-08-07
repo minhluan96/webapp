@@ -1,5 +1,9 @@
-<%= line_chart [{name: 'Doanh Thu', data: @order_details.sum(:price)}, {name: 'Lợi Nhuận', data: @order_details.sum(:revenue)}] %>
-<div class="devider"></div>
+<div id="chart-container">
+  <%= column_chart @order_details.group_by_day(:created_at, format: "%d/%m").sum(:price) %>
+  <div class="orders-summary">
+    <span class="bold">TỔNG:</span> <%= number_to_currency(@order_details.sum(:price), unit: "VNĐ", delimiter: ",", format: "%n %u", precision: 0) %>
+  </div>
+</div>
 <div class="horizontal-menu">
   <% @cases.each do |filtered_case| %>
     <div class="case-item">

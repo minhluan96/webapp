@@ -34,7 +34,7 @@
                 quantity: $('input[name="quantity"]').val()
             },
             success: function (data) {
-                Chartkick.charts["chart-1"].updateData(data)
+                $('#chart-container').html(data);
             }
         })
     };

@@ -4,7 +4,7 @@ class Admin::OrdersController < ApplicationController
   skip_before_action :verify_authenticity_token, only: [:create]
 
   def index
-    @order_details = OrderDetail.from_this_month.group_by_day(:created_at)
+    fetch_chart_data
     @cases = Case.all
   end
 
@@ -18,7 +18,8 @@ class Admin::OrdersController < ApplicationController
     @order_detail.case_category = CaseCategory.where(case_id: @case.id, category_id: params[:category_id]).first
     @order_detail.revenue = quantity*(@order_detail.price - @order_detail.cogs)
     @order_detail.save!
-    render json: fetch_chart_data
+    fetch_chart_data
+    render partial: 'admin/orders/chart', locals: {order_details: @order_details}
   end
 
   private
@@ -28,7 +29,6 @@ class Admin::OrdersController < ApplicationController
   end
 
   def fetch_chart_data
-    @order_details = OrderDetail.from_this_month.group_by_day(:created_at)
-    [{name: 'Doanh Thu', data: @order_details.sum(:price)}, {name: 'Lợi Nhuận', data: @order_details.sum(:revenue)}].to_json
+    @order_details ||= OrderDetail.from_this_month
   end
 end
