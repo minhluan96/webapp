@@ -5,9 +5,9 @@
     <div class="horizontal-menu">
       <p>
         DÒNG SẢN PHẨM:
-        <% categories.each do |category| %>
+        <% categories.each_with_index do |category, index| %>
           <label>
-            <input name="category" type="radio" value="<%= category.id %>"/>
+            <input name="category" type="radio" value="<%= category.id %>" <%= 'checked' if index == 0 %>/>
             <span><%= category.name %></span>
           </label>
         <% end %>
