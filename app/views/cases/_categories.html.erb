@@ -1,4 +1,4 @@
-<%= form_tag controller: 'admin/orders', method: :post do %>
+<%= form_tag(controller: 'admin/orders', method: :post, remote: true) do %>
   <input type="hidden" name="case_id" value="<%= case_id %>">
   <div class="modal-content">
     <h5>NHẬP ĐƠN</h5>
