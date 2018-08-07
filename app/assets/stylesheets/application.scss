@@ -2244,6 +2244,12 @@ footer {
         pointer-events: none;
       }
 
+      .quantity {
+        border-radius: 4px;
+        padding: 4px;
+        pointer-events: initial;
+      }
+
       p {
         margin-bottom: 0;
       }

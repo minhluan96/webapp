@@ -11,14 +11,24 @@ class Admin::OrdersController < ApplicationController
   def create
     @case = Case.find params[:case_id]
     @order_detail = OrderDetail.new
-    @order_detail.price = @case.is_in_sale ? @case.sale_price : @case.price
-    @order_detail.cogs = @case.capital
-    @order_detail.quantity = 1
+    @order_detail.price = quantity*(@case.is_in_sale ? @case.sale_price : @case.price)
+    @order_detail.cogs = quantity*@case.capital
+    @order_detail.quantity = quantity
     @order_detail.created_at = params[:created_at]
     @order_detail.case_category = CaseCategory.where(case_id: @case.id, category_id: params[:category_id]).first
-    @order_detail.revenue = @order_detail.price - @order_detail.cogs
+    @order_detail.revenue = quantity*(@order_detail.price - @order_detail.cogs)
     @order_detail.save!
+    render json: fetch_chart_data
+  end
+
+  private
+
+  def quantity
+    @quantity ||= params[:quantity].to_i == 0 ? 1 : params[:quantity].to_i
+  end
+
+  def fetch_chart_data
     @order_details = OrderDetail.from_this_month.group_by_day(:created_at)
-    render json: [{name: 'Doanh Thu', data: @order_details.sum(:price)}, {name: 'Lợi Nhuận', data: @order_details.sum(:revenue)}].to_json
+    [{name: 'Doanh Thu', data: @order_details.sum(:price)}, {name: 'Lợi Nhuận', data: @order_details.sum(:revenue)}].to_json
   end
 end

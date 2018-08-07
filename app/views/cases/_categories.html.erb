@@ -16,6 +16,7 @@
       <input name="created_at" type="text" class="datepicker" value="<%= Time.now.strftime('%d/%m/%Y') %>">
       <img src="<%= image_url('calendar-icon.png') %>" style="width: 30px;" onclick="$(this).parent().find('.datepicker').datepicker('show')">
     </span>
+  <span style="margin-top: 10px;">SỐ LƯỢNG: <input type="number" name="quantity" class="quantity" value="1"></span>
   <button class="pill-button" onclick="createOrder()">Tạo</button>
 </div>
 <script>
@@ -29,7 +30,8 @@
             data: {
                 case_id: $('input[name="case_id"]').val(),
                 category_id: $('input[name="category"]').val(),
-                created_at: $('input[name="created_at"]').val()
+                created_at: $('input[name="created_at"]').val(),
+                quantity: $('input[name="quantity"]').val()
             },
             success: function (data) {
                 Chartkick.charts["chart-1"].updateData(data)
