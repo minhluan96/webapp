@@ -1,22 +1,39 @@
-<%= form_tag({controller: 'admin/orders', action: :create}, remote: true) do %>
-  <input type="hidden" name="case_id" value="<%= case_id %>">
-  <div class="modal-content">
-    <h5>NHẬP ĐƠN</h5>
-    <div class="horizontal-menu">
-      <p>
-        DÒNG SẢN PHẨM:
-        <% categories.each_with_index do |category, index| %>
-          <label>
-            <input name="category" type="radio" value="<%= category.id %>" <%= 'checked' if index == 0 %>/>
-            <span><%= category.name %></span>
-          </label>
-        <% end %>
-      </p>
-    </div>
-    <span>NGÀY BÁN:
+<input type="hidden" name="case_id" value="<%= case_id %>">
+<div class="modal-content">
+  <h5>NHẬP ĐƠN</h5>
+  <div class="horizontal-menu">
+    <p>
+      DÒNG SẢN PHẨM:
+      <% categories.each_with_index do |category, index| %>
+        <label>
+          <input name="category" type="radio" value="<%= category.id %>" <%= 'checked' if index == 0 %>/>
+          <span><%= category.name %></span>
+        </label>
+      <% end %>
+    </p>
+  </div>
+  <span>NGÀY BÁN:
       <input name="created_at" type="text" class="datepicker" value="<%= Time.now.strftime('%d/%m/%Y') %>">
       <img src="<%= image_url('calendar-icon.png') %>" style="width: 30px;" onclick="$(this).parent().find('.datepicker').datepicker('show')">
     </span>
-    <button class="pill-button" onclick="$(this).parents('form').submit(); M.Modal.getInstance($('#modal1')).close();">Tạo</button>
-  </div>
-<% end %>
+  <button class="pill-button" onclick="createOrder()">Tạo</button>
+</div>
+<script>
+    function createOrder() {
+        M.Modal.getInstance($('#modal1')).close();
+        url = '/admin/orders'
+        $.ajax({
+            url: url,
+            type: 'POST',
+            data_type: 'JSON',
+            data: {
+                case_id: $('input[name="case_id"]').val(),
+                category_id: $('input[name="category"]').val(),
+                created_at: $('input[name="created_at"]').val()
+            },
+            success: function (data) {
+                Chartkick.charts["chart-1"].updateData(data)
+            }
+        })
+    };
+</script>
