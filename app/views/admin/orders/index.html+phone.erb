@@ -11,7 +11,7 @@
         <a class="modal-trigger" href="#modal1" data-id="<%= filtered_case.id %>">
           <img src="<%= image_url('remove-icon.png') %>">
         </a>
-        <a class="modal-trigger" href="#modal1" data-id="<%= filtered_case.id %>">
+        <a class="js-create-order" data-id="<%= filtered_case.id %>">
           <img src="<%= image_url('add-icon.png') %>">
         </a>
       </div>
@@ -20,26 +20,5 @@
 </div>
 <div class="materialize">
   <div id="modal1" class="modal bottom-sheet">
-    <div class="modal-content">
-      <h5>NHẬP ĐƠN</h5>
-      <div class="horizontal-menu">
-        <p>
-          DÒNG SẢN PHẨM:
-          <label>
-            <input name="category" type="radio"/>
-            <span>Iphone 5</span>
-          </label>
-          <label>
-            <input name="category" type="radio"/>
-            <span>Iphone 5</span>
-          </label>
-          <label>
-            <input name="category" type="radio"/>
-            <span>Iphone 5</span>
-          </label>
-        </p>
-      </div>
-      <span>NGÀY BÁN: <input type="text" data-provide='datepicker' ></span>
-    </div>
   </div>
 </div>

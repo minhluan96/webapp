@@ -18,7 +18,7 @@
 //= require materialize
 //= require Chart.bundle
 //= require chartkick
-//= require bootstrap-datepicker
+//= require bootstrap-datepicker/core
 //= require turbolinks
 //= require_tree .
 
@@ -78,5 +78,4 @@ document.addEventListener("turbolinks:load", function () {
     });
     $('.collapsible-header').attr('tabindex', '');
     $('.modal').modal();
-    $('.datepicker').datepicker();
 });

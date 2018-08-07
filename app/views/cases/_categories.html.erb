@@ -1,0 +1,15 @@
+<div class="modal-content">
+  <h5>NHẬP ĐƠN</h5>
+  <div class="horizontal-menu">
+    <p>
+      DÒNG SẢN PHẨM:
+      <% categories.each do |category| %>
+        <label>
+          <input name="category" type="radio" value="<%= category.id %>"/>
+          <span><%= category.name %></span>
+        </label>
+      <% end %>
+    </p>
+  </div>
+  <span>NGÀY BÁN: <input name="created_at" type="text" class="datepicker"></span>
+</div>
