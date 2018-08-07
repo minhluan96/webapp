@@ -13,7 +13,10 @@
         <% end %>
       </p>
     </div>
-    <span>NGÀY BÁN: <input name="created_at" type="text" class="datepicker" value="<%= Time.now.strftime('%d/%m/%Y') %>"></span>
+    <span>NGÀY BÁN:
+      <input name="created_at" type="text" class="datepicker" value="<%= Time.now.strftime('%d/%m/%Y') %>">
+      <img src="<%= image_url('calendar-icon.png') %>" style="width: 30px;" onclick="$(this).parent().find('.datepicker').datepicker('show')">
+    </span>
     <button class="pill-button" onclick="$(this).parents('form').submit(); M.Modal.getInstance($('#modal1')).close();">Tạo</button>
   </div>
 <% end %>
