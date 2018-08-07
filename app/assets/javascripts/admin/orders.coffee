@@ -2,7 +2,7 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-$(document).ready ->
+document.addEventListener "turbolinks:load", ->
   $('.js-create-order').click ->
     url = "/cases/#{$(@).data('id')}/categories"
     $.ajax
