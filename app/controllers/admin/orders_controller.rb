@@ -1,6 +1,7 @@
 class Admin::OrdersController < ApplicationController
   before_action :authenticate_user!, :authorize_admin
   before_action :detect_device_variant
+  skip_before_action :verify_authenticity_token, only: [:create]
 
   def index
     @order_details = OrderDetail.from_this_month.group_by_day(:created_at)
