@@ -12,4 +12,4 @@ $(document).ready ->
       success: (data)->
         $('#modal1').html(data)
         M.Modal.getInstance($("#modal1")).open()
-        $('.datepicker').datepicker({autoclose: true})
+        $('.datepicker').datepicker({autoclose: true, format: 'dd/mm/yyyy'})

@@ -552,8 +552,8 @@ footer {
   padding: 30px 18px;
   display: inline-block;
   vertical-align: top;
-  -moz-user-select:none;
-  -webkit-user-select:none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
 
   &__title {
     font-weight: 400;
@@ -873,16 +873,6 @@ footer {
       width: 100%;
     }
   }
-}
-
-.pill-button {
-  background-color: $orange;
-  color: white;
-  padding: 8px 40px;
-  font-size: 18px;
-  display: inline-block;
-  border-radius: 2px;
-  margin-bottom: 10px;
 }
 
 .devider {
@@ -2235,7 +2225,7 @@ footer {
       width: 80%;
     }
 
-    h1,h2,h3,h4 {
+    h1, h2, h3, h4 {
       margin-top: 0;
     }
 
@@ -2308,7 +2298,7 @@ footer {
     }
 
     .modal-footer {
-      border-top: 1px solid rgba(0,0,0,.1);
+      border-top: 1px solid rgba(0, 0, 0, .1);
       position: absolute;
       bottom: 0;
     }
@@ -2324,7 +2314,6 @@ footer {
     border-radius: 0;
     will-change: bottom, opacity;
   }
-
 
 }
 
@@ -2358,11 +2347,27 @@ footer {
 }
 
 .z-depth-5 {
-  box-shadow: 0 24px 38px 3px rgba(0,0,0,0.14),
-  0 9px 46px 8px rgba(0,0,0,0.12),
-  0 11px 15px -7px rgba(0,0,0,0.2);
+  box-shadow: 0 24px 38px 3px rgba(0, 0, 0, 0.14),
+  0 9px 46px 8px rgba(0, 0, 0, 0.12),
+  0 11px 15px -7px rgba(0, 0, 0, 0.2);
 }
 
 .z-depth-1-half {
   box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.14), 0 1px 7px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -1px rgba(0, 0, 0, 0.2);
+}
+
+.pill-button {
+  color: white;
+  background-color: $orange;
+  padding: 8px 40px;
+  font-size: 18px;
+  font-weight: bold;
+  display: block;
+  text-align: center;
+  border: none;
+  margin-top: 10px;
+  -webkit-transition: background-color 0.4s ease, color 0.4s ease;
+  -moz-transition: background-color 0.4s ease, color 0.4s ease;
+  -o-transition: background-color 0.4s ease, color 0.4s ease;
+  transition: background-color 0.4s ease, color 0.4s ease;
 }

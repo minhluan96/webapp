@@ -31,7 +31,7 @@ class CasesController < ApplicationController
 
   def categories
     @case = Case.find(params[:case_id])
-    render partial: 'categories', locals: {categories: @case.case_categories.includes(:category).map(&:category)}
+    render partial: 'categories', locals: {categories: @case.case_categories.includes(:category).map(&:category), case_id: @case.id}
   end
 
   def mobile_filter_cases

@@ -1,15 +1,19 @@
-<div class="modal-content">
-  <h5>NHẬP ĐƠN</h5>
-  <div class="horizontal-menu">
-    <p>
-      DÒNG SẢN PHẨM:
-      <% categories.each do |category| %>
-        <label>
-          <input name="category" type="radio" value="<%= category.id %>"/>
-          <span><%= category.name %></span>
-        </label>
-      <% end %>
-    </p>
+<%= form_tag controller: 'admin/orders', method: :post do %>
+  <input type="hidden" name="case_id" value="<%= case_id %>">
+  <div class="modal-content">
+    <h5>NHẬP ĐƠN</h5>
+    <div class="horizontal-menu">
+      <p>
+        DÒNG SẢN PHẨM:
+        <% categories.each do |category| %>
+          <label>
+            <input name="category" type="radio" value="<%= category.id %>"/>
+            <span><%= category.name %></span>
+          </label>
+        <% end %>
+      </p>
+    </div>
+    <span>NGÀY BÁN: <input name="created_at" type="text" class="datepicker" value="<%= Time.now.strftime('%d/%m/%Y') %>"></span>
+    <button class="pill-button" onclick="$(this).parents('form').submit(); M.Modal.getInstance($('#modal1')).close();">Tạo</button>
   </div>
-  <span>NGÀY BÁN: <input name="created_at" type="text" class="datepicker"></span>
-</div>
+<% end %>
