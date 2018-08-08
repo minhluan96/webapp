@@ -194,6 +194,7 @@ body.mobile {
       width: 50%;
       display: inline-block;
       margin: 0 5px;
+      font-size: 14px;
 
       img {
         width: 192px;
@@ -201,14 +202,10 @@ body.mobile {
         border: 1px solid #ccc;
       }
 
-      .bold {
-        font-size: 12px;
-      }
-
       .control {
         position: absolute;
         right: 0;
-        bottom: 0;
+        top: 0;
 
         img {
           width: 20px;
