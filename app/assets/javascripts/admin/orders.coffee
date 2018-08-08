@@ -4,7 +4,7 @@
 
 document.addEventListener "turbolinks:load", ->
   $('.js-create-order').click ->
-    url = "/cases/#{$(@).data('id')}/categories"
+    url = "/admin/cases/#{$(@).data('id')}/categories"
     $.ajax
       url: url
       type: 'get'
@@ -13,3 +13,13 @@ document.addEventListener "turbolinks:load", ->
         $('#modal1').html(data)
         M.Modal.getInstance($("#modal1")).open()
         $('.datepicker').datepicker({autoclose: true, format: 'dd/mm/yyyy'})
+
+  $('.js-remove-order').click ->
+    url = "/admin/cases/#{$(@).data('id')}/get_orders"
+    $.ajax
+      url: url
+      type: 'get'
+      data_type: 'json'
+      success: (data)->
+        $('#modal1').html(data)
+        M.Modal.getInstance($("#modal1")).open()

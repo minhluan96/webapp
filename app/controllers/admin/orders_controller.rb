@@ -1,7 +1,7 @@
 class Admin::OrdersController < ApplicationController
   before_action :authenticate_user!, :authorize_admin
   before_action :detect_device_variant
-  skip_before_action :verify_authenticity_token, only: [:create]
+  skip_before_action :verify_authenticity_token, only: [:create, :destroy]
 
   def index
     fetch_chart_data
@@ -18,6 +18,12 @@ class Admin::OrdersController < ApplicationController
     @order_detail.case_category = CaseCategory.where(case_id: @case.id, category_id: params[:category_id]).first
     @order_detail.revenue = quantity*(@order_detail.price - @order_detail.cogs)
     @order_detail.save!
+    fetch_chart_data
+    render partial: 'admin/orders/chart', locals: {order_details: @order_details}
+  end
+
+  def destroy
+    OrderDetail.find(params[:id]).destroy
     fetch_chart_data
     render partial: 'admin/orders/chart', locals: {order_details: @order_details}
   end

@@ -1,5 +1,6 @@
 class Admin::CasesController < ApplicationController
   before_action :authenticate_user!, :authorize_admin
+  skip_before_action :verify_authenticity_token, only: [:get_orders, :categories]
 
   def new
     @case = Case.new
@@ -47,6 +48,16 @@ class Admin::CasesController < ApplicationController
   def toggle_is_available
     @case = Case.find(params[:id])
     @case.update_attribute(:is_available, !@case.is_available)
+  end
+
+  def get_orders
+    @case = Case.includes(case_categories: [:order_details]).find params[:case_id]
+    render partial: 'orders', locals: {pill_case: @case}
+  end
+
+  def categories
+    @case = Case.includes(case_categories: [:category]).find(params[:case_id])
+    render partial: 'categories', locals: {categories: @case.case_categories.map(&:category), case_id: @case.id}
   end
 
   private

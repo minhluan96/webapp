@@ -9,7 +9,7 @@
         <span class="bold"><%= filtered_case.name %><br></span>
       </div>
       <div class="control">
-        <a class="modal-trigger" href="#modal1" data-id="<%= filtered_case.id %>">
+        <a class="js-remove-order" data-id="<%= filtered_case.id %>">
           <img src="<%= image_url('remove-icon.png') %>">
         </a>
         <a class="js-create-order" data-id="<%= filtered_case.id %>">

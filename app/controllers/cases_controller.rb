@@ -1,7 +1,7 @@
 class CasesController < ApplicationController
   add_breadcrumb "Home", :root_path
   add_breadcrumb "Shop", :cases_path
-  skip_before_action :verify_authenticity_token, only: [:filter_cases, :categories]
+  skip_before_action :verify_authenticity_token, only: [:filter_cases]
   before_action :detect_device_variant, only: [:show, :index, :tempered_glass]
 
   def tempered_glass
@@ -27,11 +27,6 @@ class CasesController < ApplicationController
     @per_page = 9
     load_cases
     render partial: 'filtered_products', locals: {cases: @cases }
-  end
-
-  def categories
-    @case = Case.find(params[:case_id])
-    render partial: 'categories', locals: {categories: @case.case_categories.includes(:category).map(&:category), case_id: @case.id}
   end
 
   def mobile_filter_cases
