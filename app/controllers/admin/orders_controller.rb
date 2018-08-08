@@ -1,7 +1,7 @@
 class Admin::OrdersController < ApplicationController
   before_action :authenticate_user!, :authorize_admin
   before_action :detect_device_variant
-  skip_before_action :verify_authenticity_token, only: [:create, :destroy]
+  skip_before_action :verify_authenticity_token, only: [:create, :destroy, :change_chart_type]
 
   def index
     fetch_chart_data
@@ -16,22 +16,31 @@ class Admin::OrdersController < ApplicationController
     @order_detail.quantity = quantity
     @order_detail.created_at = params[:created_at]
     @order_detail.case_category = CaseCategory.where(case_id: @case.id, category_id: params[:category_id]).first
-    @order_detail.revenue = quantity*(@order_detail.price - @order_detail.cogs)
+    @order_detail.revenue = @order_detail.price - @order_detail.cogs
     @order_detail.save!
     fetch_chart_data
-    render partial: 'admin/orders/chart', locals: {order_details: @order_details}
+    render partial: 'admin/orders/chart', locals: {order_details: @order_details, chart_type: chart_type}
   end
 
   def destroy
     OrderDetail.find(params[:id]).destroy
     fetch_chart_data
-    render partial: 'admin/orders/chart', locals: {order_details: @order_details}
+    render partial: 'admin/orders/chart', locals: {order_details: @order_details, chart_type: chart_type}
+  end
+
+  def change_chart_type
+    fetch_chart_data
+    render partial: 'admin/orders/chart', locals: {order_details: @order_details, chart_type: chart_type}
   end
 
   private
 
   def quantity
     @quantity ||= params[:quantity].to_i == 0 ? 1 : params[:quantity].to_i
+  end
+
+  def chart_type
+    CHART_TYPE[(params[:chart_type].presence || 1).to_i]
   end
 
   def fetch_chart_data

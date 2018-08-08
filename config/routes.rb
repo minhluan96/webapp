@@ -20,5 +20,6 @@ Rails.application.routes.draw do
       end
     end
     resources 'orders'
+    get 'change_chart_type/:chart_type', to: 'orders#change_chart_type'
   end
 end

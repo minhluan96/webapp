@@ -1,4 +1,14 @@
-<%= column_chart @order_details.group_by_day(:created_at, format: "%d/%m").sum('price/1000'), {suffix: "K"} %>
-<div class="orders-summary">
-  <span class="bold">TỔNG:</span> <%= number_to_currency(@order_details.sum(:price), unit: "VNĐ", delimiter: ",", format: "%n %u", precision: 0) %>
+<%= column_chart @order_details.group_by_day(:created_at, format: "%d/%m").sum("#{chart_type}/1000"), {suffix: "K"} %>
+<div class="orders-summary clearfix">
+  <span class="bold">TỔNG:</span> <%= number_to_currency(@order_details.sum(chart_type), unit: "VNĐ", delimiter: ",", format: "%n %u", precision: 0) %>
+  <div class="chart-control materialize">
+    <a class='dropdown-trigger btn' href='javascript:void(0)' data-target='dropdown1'><%= chart_type == CHART_TYPE[1] ? "DOANH THU" : "LỢI NHUẬN" %></a>
+    <ul id='dropdown1' class='dropdown-content'>
+      <li><a href="javascript:void(0)" onclick="changeChartType(1)">DOANH THU</a></li>
+      <li><a href="javascript:void(0)" onclick="changeChartType(2)">LỢI NHUẬN</a></li>
+    </ul>
+  </div>
 </div>
+<script>
+    $('.dropdown-trigger').dropdown();
+</script>

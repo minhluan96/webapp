@@ -1,5 +1,5 @@
 <div id="chart-container">
-  <%= render partial: 'admin/orders/chart', locals: {order_details: @order_details} %>
+  <%= render partial: 'admin/orders/chart', locals: {order_details: @order_details, chart_type: CHART_TYPE[params[:chart_type] || 1]} %>
 </div>
 <div class="horizontal-menu">
   <% @cases.each do |filtered_case| %>
@@ -23,3 +23,15 @@
   <div id="modal1" class="modal bottom-sheet">
   </div>
 </div>
+<script>
+  function changeChartType(type) {
+      $.ajax({
+          url: "change_chart_type/" + type,
+          type: 'GET',
+          data_type: 'JSON',
+          success: function (data) {
+              $('#chart-container').html(data);
+          }
+      })
+  };
+</script>
