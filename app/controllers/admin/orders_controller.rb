@@ -16,7 +16,7 @@ class Admin::OrdersController < ApplicationController
     @order_detail.quantity = quantity
     @order_detail.created_at = params[:created_at]
     @order_detail.case_category = CaseCategory.where(case_id: @case.id, category_id: params[:category_id]).first
-    @order_detail.revenue = @order_detail.price - @order_detail.cogs
+    @order_detail.revenue = @order_detail.price - @order_detail.cogs - extra_price
     @order_detail.save!
     fetch_chart_data
     render partial: 'admin/orders/chart', locals: {order_details: @order_details, chart_type: chart_type}
@@ -34,6 +34,10 @@ class Admin::OrdersController < ApplicationController
   end
 
   private
+
+  def extra_price
+    params[:extra_price].to_i
+  end
 
   def quantity
     @quantity ||= params[:quantity].to_i == 0 ? 1 : params[:quantity].to_i

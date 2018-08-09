@@ -17,6 +17,7 @@
       <img src="<%= image_url('calendar-icon.png') %>" style="width: 30px;" onclick="$(this).parent().find('.datepicker').datepicker('show')">
     </span>
   <span style="margin-top: 10px;">SỐ LƯỢNG: <input type="number" name="quantity" class="quantity" value="1"></span>
+  <span style="margin-top: 10px;">CHI PHÍ KHÁC: <input type="number" name="extra_price" class="quantity" value="0"></span>
   <button class="pill-button" onclick="createOrder()">Tạo</button>
 </div>
 <script>
@@ -31,7 +32,8 @@
                 case_id: $('input[name="case_id"]').val(),
                 category_id: $('input[name="category"]').val(),
                 created_at: $('input[name="created_at"]').val(),
-                quantity: $('input[name="quantity"]').val()
+                quantity: $('input[name="quantity"]').val(),
+                extra_price: $('input[name="extra_price"]').val()
             },
             success: function (data) {
                 $('#chart-container').html(data);
