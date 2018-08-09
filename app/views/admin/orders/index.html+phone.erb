@@ -6,7 +6,7 @@
     <div class="case-item">
       <img src="<%= filtered_case.image %>">
       <div style="position: relative;">
-        <span class="bold"><%= filtered_case.name %><br></span>
+        <span class="bold ellipsis"><%= filtered_case.name %><br></span>
         <% unless filtered_case.is_in_sale %>
           <%= filtered_case.formatted_price %>
         <% else %>
