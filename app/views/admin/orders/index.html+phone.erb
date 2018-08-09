@@ -2,13 +2,7 @@
   <%= render partial: 'admin/orders/chart', locals: {order_details: @order_details, chart_type: CHART_TYPE[params[:chart_type] || 1]} %>
 </div>
 <div class="tabs">
-  <div class="tab active" data-target="#make-order">
-    Bán Hàng
-    <div class="underline"></div>
-  </div><div class="tab" data-target="#current-orders">
-    Hóa Đơn
-    <div class="underline"></div>
-  </div>
+  <span class="tab active" data-target="#make-order">Bán Hàng<div class="underline"></div></span><span class="tab" data-target="#current-orders">Hóa Đơn<div class="underline"></div></span>
 </div>
 <div class="horizontal-menu tab-content" id="make-order">
   <% @cases.each do |filtered_case| %>
