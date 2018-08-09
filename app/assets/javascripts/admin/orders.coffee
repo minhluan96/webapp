@@ -23,3 +23,9 @@ document.addEventListener "turbolinks:load", ->
       success: (data)->
         $('#modal1').html(data)
         M.Modal.getInstance($("#modal1")).open()
+
+  $('.tab').click (e)->
+    $('.tab').removeClass('active')
+    $('.tab-content').hide()
+    $(@).addClass('active')
+    $($(@).data('target')).show()

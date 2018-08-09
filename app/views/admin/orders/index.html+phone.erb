@@ -1,7 +1,17 @@
 <div id="chart-container">
   <%= render partial: 'admin/orders/chart', locals: {order_details: @order_details, chart_type: CHART_TYPE[params[:chart_type] || 1]} %>
 </div>
-<div class="horizontal-menu">
+<div class="tabs">
+  <div class="tab active" data-target="#make-order">
+    Bán Hàng
+    <div class="underline"></div>
+  </div>
+  <div class="tab">
+    Hóa Đơn
+    <div class="underline"></div>
+  </div>
+</div>
+<div class="horizontal-menu tab-content" id="make-order">
   <% @cases.each do |filtered_case| %>
     <div class="case-item">
       <img src="<%= filtered_case.image %>">
