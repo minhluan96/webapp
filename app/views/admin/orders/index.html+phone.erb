@@ -5,7 +5,8 @@
   <div class="tab active" data-target="#make-order">
     Bán Hàng
     <div class="underline"></div>
-  </div><div class="tab">
+  </div>
+  <div class="tab" data-target="#current-orders">
     Hóa Đơn
     <div class="underline"></div>
   </div>
@@ -34,19 +35,24 @@
     </div>
   <% end %>
 </div>
+<div id="current-orders" class="hide tab-content">
+  <div id="demo">
+
+  </div>
+</div>
 <div class="materialize">
   <div id="modal1" class="modal bottom-sheet">
   </div>
 </div>
 <script>
-  function changeChartType(type) {
-      $.ajax({
-          url: "change_chart_type/" + type,
-          type: 'GET',
-          data_type: 'JSON',
-          success: function (data) {
-              $('#chart-container').html(data);
-          }
-      })
-  };
+    function changeChartType(type) {
+        $.ajax({
+            url: "change_chart_type/" + type,
+            type: 'GET',
+            data_type: 'JSON',
+            success: function (data) {
+                $('#chart-container').html(data);
+            }
+        })
+    };
 </script>
