@@ -11,12 +11,12 @@ class Admin::OrdersController < ApplicationController
   def create
     @case = Case.find params[:case_id]
     @order_detail = OrderDetail.new
-    @order_detail.price = quantity*(@case.is_in_sale ? @case.sale_price : @case.price)
+    @order_detail.price = quantity*(@case.is_in_sale ? @case.sale_price : @case.price)  - extra_price
     @order_detail.cogs = quantity*@case.capital
     @order_detail.quantity = quantity
-    @order_detail.created_at = params[:created_at]
+    @order_detail.created_at = params[:created_at]]
     @order_detail.case_category = CaseCategory.where(case_id: @case.id, category_id: params[:category_id]).first
-    @order_detail.revenue = @order_detail.price - @order_detail.cogs - extra_price
+    @order_detail.revenue = @order_detail.price - @order_detail.cogs
     @order_detail.save!
     fetch_chart_data
     render partial: 'admin/orders/chart', locals: {order_details: @order_details, chart_type: chart_type}
