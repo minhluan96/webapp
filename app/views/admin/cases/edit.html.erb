@@ -29,7 +29,7 @@
       <% Category.case.order(:name).each do |category| %>
         <div class="input-control">
           <label><%= category.name %>:</label>
-          <input type="text" name="case[category[<%= category.id %>]]" value="<%= @case.case_categories.where(category_id: category.id).first.try(:quantity) %>">
+          <input type="text" name="case[category[<%= category.id %>]]" value="<%= @case.case_categories.active_category.where(category_id: category.id).first.try(:quantity) %>">
         </div>
       <% end %>
       <div class="devider"></div>
@@ -37,7 +37,7 @@
       <% Category.tempered_glass.order(:name).each do |category| %>
         <div class="input-control">
           <label><%= category.name %>:</label>
-          <input type="text" name="case[category[<%= category.id %>]]" value="<%= @case.case_categories.where(category_id: category.id).first.try(:quantity) %>">
+          <input type="text" name="case[category[<%= category.id %>]]" value="<%= @case.case_categories.active_category.where(category_id: category.id).first.try(:quantity) %>">
         </div>
       <% end %>
     </div>

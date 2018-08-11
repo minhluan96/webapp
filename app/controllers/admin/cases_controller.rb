@@ -16,7 +16,7 @@ class Admin::CasesController < ApplicationController
   end
 
   def edit
-    @case = Case.includes([:case_categories, :case_images]).find(params[:id])
+    @case = Case.includes([:case_images, case_categories: [:category]]).find(params[:id])
   end
 
   def update
@@ -24,7 +24,7 @@ class Admin::CasesController < ApplicationController
     ActiveRecord::Base.transaction do
       update_case_with_params
       @case.case_images.destroy_all
-      @case.case_categories.destroy_all
+      @case.case_categories.update_all(active: false)
       update_image_and_category
     end
     redirect_to session[:previous_url] || admin_cases_path
@@ -90,8 +90,10 @@ class Admin::CasesController < ApplicationController
       CaseImage.create(case_id: @case.id, image_url: case_image)
     end
     case_categories.each do |k, v|
-      next unless v.present?
-      CaseCategory.create(case_id: @case.id, category_id: k, quantity: v)
+      case_category = CaseCategory.where(case_id: @case.id, category_id: k).first_or_initialize
+      case_category.quantity = v.to_i
+      case_category.active = v.present?
+      case_category.save!
     end
   end
 end

@@ -35,7 +35,7 @@
     </div>
     <div class="product-detail--quantity">
       <div class="materialize">
-        <% @case.case_categories.includes(:category).order('categories.name').each do |case_category| %>
+        <% @case.case_categories.active_category.includes(:category).order('categories.name').each do |case_category| %>
           <div class="chip">
             <%= case_category.category.name %>
             <i class="close material-icons">phone_iphone</i>

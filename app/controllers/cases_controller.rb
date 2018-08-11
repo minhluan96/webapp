@@ -11,7 +11,7 @@ class CasesController < ApplicationController
   end
 
   def show
-    @case = Case.includes([:case_images, :case_categories]).find(params[:id])
+    @case = Case.includes([:case_images, case_categories: [:category]]).find(params[:id])
     add_breadcrumb @case.name
     session[:previous_url] = request.fullpath
     @back_url = session[:mobile_previous_url] || root_path
@@ -44,13 +44,13 @@ class CasesController < ApplicationController
 
   def cases
     if @category_id == 0
-      ids = CaseCategory.where(category_id: Category.case.pluck(:id)).pluck :case_id
+      ids = CaseCategory.active_category.where(category_id: Category.case.pluck(:id)).pluck :case_id
       result = Case.where(id: ids)
     elsif @category_id == -1
-      ids = CaseCategory.where(category_id: Category.tempered_glass.pluck(:id)).pluck :case_id
+      ids = CaseCategory.active_category.where(category_id: Category.tempered_glass.pluck(:id)).pluck :case_id
       result = Case.where(id: ids)
     else
-      ids = CaseCategory.where(category_id: @category_id).pluck :case_id
+      ids = CaseCategory.active_category.where(category_id: @category_id).pluck :case_id
       result = Case.where(id: ids)
     end
     result = result.where(is_available: @is_available) if @is_available
