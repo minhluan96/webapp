@@ -57,7 +57,7 @@ class Admin::CasesController < ApplicationController
 
   def categories
     @case = Case.includes(case_categories: [:category]).find(params[:case_id])
-    render partial: 'categories', locals: {categories: @case.case_categories.map(&:category), case_id: @case.id}
+    render partial: 'categories', locals: {categories: @case.case_categories.active_category.map(&:category), case_id: @case.id}
   end
 
   private
