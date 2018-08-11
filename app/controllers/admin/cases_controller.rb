@@ -31,12 +31,12 @@ class Admin::CasesController < ApplicationController
   end
 
   def index
-    @cases = Case.all
+    @cases = Case.active_case
     session.delete(:previous_url)
   end
 
   def destroy
-    Case.find(params[:id]).destroy
+    Case.find(params[:id]).update_attribute(:active, false)
     redirect_to admin_cases_path
   end
 

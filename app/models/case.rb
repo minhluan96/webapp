@@ -7,6 +7,7 @@ class Case < ApplicationRecord
   scope :top_sales, -> {where(is_top_sales: true)}
   scope :next, -> (id) {where("id > ?", id)}
   scope :previous, -> (id) {where("id < ?", id)}
+  scope :active_case, ->{where(active: true)}
 
   include ActiveSupport::NumberHelper
 

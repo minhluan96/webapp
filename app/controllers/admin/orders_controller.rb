@@ -5,7 +5,7 @@ class Admin::OrdersController < ApplicationController
 
   def index
     fetch_chart_data
-    @cases = Case.all
+    @cases = Case.active_case
   end
 
   def create

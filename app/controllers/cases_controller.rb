@@ -45,13 +45,13 @@ class CasesController < ApplicationController
   def cases
     if @category_id == 0
       ids = CaseCategory.active_category.where(category_id: Category.case.pluck(:id)).pluck :case_id
-      result = Case.where(id: ids)
+      result = Case.active_case.where(id: ids)
     elsif @category_id == -1
       ids = CaseCategory.active_category.where(category_id: Category.tempered_glass.pluck(:id)).pluck :case_id
-      result = Case.where(id: ids)
+      result = Case.active_case.where(id: ids)
     else
       ids = CaseCategory.active_category.where(category_id: @category_id).pluck :case_id
-      result = Case.where(id: ids)
+      result = Case.active_case.where(id: ids)
     end
     result = result.where(is_available: @is_available) if @is_available
     result = result.where(is_in_sale: @is_sale) if @is_sale

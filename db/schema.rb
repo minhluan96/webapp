@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180811024519) do
+ActiveRecord::Schema.define(version: 20180811035121) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(version: 20180811024519) do
     t.boolean "is_in_sale", default: false
     t.integer "sale_price"
     t.integer "capital"
+    t.boolean "active", default: true
     t.index ["category_id"], name: "index_cases_on_category_id"
   end
 
