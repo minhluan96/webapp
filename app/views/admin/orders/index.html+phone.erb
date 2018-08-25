@@ -29,8 +29,25 @@
   <% end %>
 </div>
 <div id="current-orders" class="hide tab-content">
-  <div id="demo">
-
+  <div class="materialize">
+    <table class="striped no-padding">
+      <% @orders_in_month.each do |order_detail| %>
+        <tr>
+          <td>
+            <img src="<%= order_detail.case_category.case.image %>">
+          </td>
+          <td>
+            <%= order_detail.quantity %>
+          </td>
+          <td>
+            <%= order_detail.case_category.category.name %>
+          </td>
+          <td>
+            <%= order_detail.created_at.strftime(SHORT_DATE_FORMAT) %>
+          </td>
+        </tr>
+      <% end %>
+    </table>
   </div>
 </div>
 <div class="materialize">

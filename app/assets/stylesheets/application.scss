@@ -2530,6 +2530,17 @@ footer {
       }
     }
 
+    &.no-padding {
+      td {
+        padding: 0;
+      }
+
+      img {
+        width: 60px;
+        height: 60px;
+      }
+    }
+
     &.highlight > tbody > tr {
       transition: background-color .25s ease;
       &:hover {

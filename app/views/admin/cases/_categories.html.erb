@@ -13,7 +13,7 @@
     </p>
   </div>
   <span>NGÀY BÁN:
-      <input name="created_at" type="text" class="datepicker" value="<%= Time.now.strftime(DATE_FORMAT) %>">
+      <input name="created_at" type="text" class="datepicker" value="<%= Time.now.strftime(LONG_DATE_FORMAT) %>">
       <img src="<%= image_url('calendar-icon.png') %>" style="width: 30px;" onclick="$(this).parent().find('.datepicker').datepicker('show')">
     </span>
   <span style="margin-top: 10px;">SỐ LƯỢNG: <input type="number" name="quantity" class="quantity" value="1"></span>

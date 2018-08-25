@@ -10,7 +10,7 @@
       <% @case.case_categories.map(&:order_details).flatten.each do |order_detail| %>
         <tr>
           <td>
-            <%= order_detail.created_at.strftime(DATE_FORMAT) %>
+            <%= order_detail.created_at.strftime(LONG_DATE_FORMAT) %>
           </td>
           <td>
             <%= order_detail.quantity %>
