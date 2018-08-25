@@ -5,7 +5,7 @@ class Admin::OrdersController < ApplicationController
 
   def index
     fetch_chart_data
-    @orders_in_month = fetch_chart_data.includes(case_category: [:case, :category])
+    @orders_in_month = fetch_chart_data.includes(case_category: [:case, :category]).order(created_at: :desc)
     @cases = Case.active_case
   end
 
