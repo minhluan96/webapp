@@ -32,6 +32,7 @@
   <div class="materialize">
     <table class="striped no-padding">
       <% @orders_in_month.each do |order_detail| %>
+        <% next if order_detail.case_category.blank? %>
         <tr>
           <td>
             <img src="<%= order_detail.case_category.case.image %>">
